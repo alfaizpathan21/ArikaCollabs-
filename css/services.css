@@ -1,0 +1,218 @@
+@import "../src/index.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0F0F0E;
+    color: #F8F6F5;
+    overflow-x: hidden;
+}
+
+html.light body {
+    background-color: #FAF8F6 !important;
+    color: #121110 !important;
+}
+
+.glass-card {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(165, 109, 96, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(221, 162, 145, 0.6);
+    background: rgba(35, 35, 35, 0.85);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.rose-gold-gradient {
+    background: linear-gradient(135deg, #DDA291 0%, #C68878 50%, #A56D60 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.luminous-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(198, 136, 120, 0.18) 0%, rgba(15, 15, 14, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Mobile menu slideout styles */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Premium luxury hover effect for navbar links */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #DDA291; /* Rose Gold */
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* If active, underline is fully displayed */
+.nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Premium interactive hover & click effect for buttons */
+.navbar-btn-interactive {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center;
+}
+
+.navbar-btn-interactive:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(221, 162, 145, 0.5);
+}
+
+.navbar-btn-interactive:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(221, 162, 145, 0.3);
+}
+
+/* Tactile active click effect for mobile burger and close buttons */
+#mobile-menu-btn, #mobile-menu-close-btn {
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#mobile-menu-btn:active, #mobile-menu-close-btn:active {
+    transform: scale(0.85);
+}
+
+/* ==========================================
+   Services Page Light Mode Theme Overrides
+   ========================================== */
+html.light header {
+    background-color: rgba(250, 248, 246, 0.88) !important;
+    border-bottom-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light section,
+html.light section.bg-black,
+html.light section.bg-\[\#0F0F0E\] {
+    background-color: #FAF8F6 !important;
+    border-top-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light footer,
+html.light footer.bg-\[\#0F0F0E\] {
+    background-color: #FAF8F6 !important;
+    border-top-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light .glass-card,
+html.light .service-card {
+    background-color: #FFFFFF !important;
+    border-color: rgba(198, 136, 120, 0.3) !important;
+    box-shadow: 0 10px 30px -10px rgba(198, 136, 120, 0.15), 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light .glass-card:hover,
+html.light .service-card:hover {
+    background-color: #FFFFFF !important;
+    border-color: #C68878 !important;
+    box-shadow: 0 20px 45px -10px rgba(198, 136, 120, 0.25), 0 0 20px rgba(198, 136, 120, 0.1) !important;
+}
+
+html.light .service-icon-box {
+    background-color: rgba(198, 136, 120, 0.12) !important;
+}
+
+html.light .service-card:hover .service-icon-box {
+    background-color: rgba(198, 136, 120, 0.22) !important;
+}
+
+html.light .service-card h3,
+html.light .service-card .text-white,
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light .text-white {
+    color: #121110 !important;
+}
+
+html.light .service-card p,
+html.light .text-on-surface-variant {
+    color: #5C5855 !important;
+}
+
+html.light .rose-gold-gradient {
+    background: linear-gradient(135deg, #121110 0%, #A56D60 50%, #C68878 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html.light .luminous-glow {
+    background: radial-gradient(circle, rgba(198, 136, 120, 0.15) 0%, rgba(250, 248, 246, 0) 70%) !important;
+}
+
+html.light .nav-link {
+    color: #3D3935 !important;
+}
+
+html.light .nav-link:hover,
+html.light .nav-link.active {
+    color: #C68878 !important;
+}
+
+html.light #theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(198, 136, 120, 0.4) !important;
+    color: #A56D60 !important;
+}
+
+html.light #mobile-menu {
+    background-color: rgba(250, 248, 246, 0.98) !important;
+    border-left-color: rgba(198, 136, 120, 0.3) !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10 {
+    border-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+
+

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us | ARIKA COLLABS</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="./css/about.css" />
+</head>
+<body class="bg-black text-on-surface select-none">
+
+    <!-- Slim Scroll Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-[3px] bg-white/5 z-[100] pointer-events-none">
+        <div id="scroll-progress" class="h-full w-0 bg-primary shadow-[0_0_8px_#DDA291] transition-all duration-75"></div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <nav class="max-w-container-max mx-auto px-6 md:px-margin-desktop py-4 flex justify-between items-center">
+            <a class="font-display-lg text-primary tracking-tighter text-xl md:text-2xl font-bold" href="index.html">ARIKA COLLABS</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="index.html">HOME</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="services.html">SERVICES</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="portfolio.html">PORTFOLIO</a>
+                <a class="text-primary font-bold font-label-lg text-label-lg nav-link active" href="about.html">ABOUT US</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <!-- High-End Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="inline-flex items-center justify-center w-9 h-9 rounded-full glass-panel text-[#DDA291] border border-[#DDA291]/30 hover:border-[#DDA291] hover:shadow-[0_0_15px_rgba(221,162,145,0.3)] transition-all cursor-pointer group" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+                    <div class="relative w-5 h-5 flex items-center justify-center">
+                        <span id="theme-icon-sun" class="material-symbols-outlined text-amber-400 text-lg absolute transition-all duration-300 hidden scale-0">light_mode</span>
+                        <span id="theme-icon-moon" class="material-symbols-outlined text-[#DDA291] text-lg absolute transition-all duration-300 block scale-100">bedtime</span>
+                    </div>
+                </button>
+                <a class="hidden sm:inline-block bg-primary text-on-primary font-label-lg text-label-lg px-6 py-2 rounded-full hover:bg-primary/95 hover:shadow-[0_0_20px_rgba(221,162,145,0.4)] transition-all navbar-btn-interactive" href="contact.html">
+                    CONTACT
+                </a>
+                <!-- Mobile burger button -->
+                <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-white">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-surface-container-lowest/95 backdrop-blur-lg translate-x-full transition-transform duration-300 md:hidden flex flex-col p-8 shadow-2xl border-l border-outline-variant/25 overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
+            <span class="font-display-lg text-primary text-xl font-bold tracking-wider">ARIKA COLLABS</span>
+            <button id="mobile-menu-close-btn" class="text-primary hover:text-white p-1 rounded-lg transition-colors cursor-pointer" aria-label="Close menu">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-5 text-left mb-6">
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="index.html">HOME</a>
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="services.html">SERVICES</a>
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-primary font-bold text-xl border-l-2 border-primary pl-4" href="about.html">ABOUT US</a>
+            <button id="mobile-theme-toggle-btn" class="flex items-center justify-between p-3.5 rounded-xl border border-[#DDA291]/30 glass-panel text-[#DDA291] font-mono text-sm mt-2 cursor-pointer">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">palette</span>
+                    <span>Theme</span>
+                </span>
+                <span id="mobile-theme-toggle-status" class="text-xs font-bold px-3 py-1 rounded-full bg-[#DDA291]/15 border border-[#DDA291]/30">
+                    Dark Luxury
+                </span>
+            </button>
+            <a class="mt-4 bg-primary text-on-primary text-center py-3 rounded-full font-bold btn-shine navbar-btn-interactive" href="contact.html">CONTACT NOW</a>
+        </div>
+
+        <!-- Quick Links & Socials Footer -->
+        <div class="mt-auto pt-6 border-t border-outline-variant/25 flex flex-col gap-5">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-primary/90 mb-3 block font-semibold">Quick Links</span>
+                <div class="grid grid-cols-2 gap-2 text-xs font-mono text-on-surface-variant">
+                    <a href="services.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Services</a>
+                    <a href="portfolio.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Case Studies</a>
+                    <a href="about.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Our Story</a>
+                    <a href="contact.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Contact</a>
+                </div>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="flex items-center gap-3 pt-1">
+                <a href="https://www.instagram.com/arika_collabs/" target="_blank" rel="noopener" aria-label="Instagram" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/arika-collabs" target="_blank" rel="noopener" aria-label="LinkedIn" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:support@arikacollabs.com" aria-label="Email" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="text-[11px] font-mono text-on-surface-variant/70 pt-2 border-t border-outline-variant/10">
+                © 2026 ARIKA COLLABS. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[78vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
+        <div class="luminous-glow top-1/4 left-1/4 opacity-80"></div>
+        <div class="luminous-glow bottom-1/4 right-1/4 opacity-60"></div>
+
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop text-center relative z-10 py-12">
+            
+            <!-- Luxury Eyebrow Badge -->
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-[0.25em] mb-6 section-reveal active shadow-[0_0_15px_rgba(221,162,145,0.15)]">
+                <span class="text-[#DDA291] text-sm">✦</span>
+                <span class="font-semibold">BOUTIQUE TALENT &amp; BRAND AGENCY</span>
+                <span class="text-[#DDA291] text-sm">✦</span>
+            </div>
+
+            <!-- High Impact Display Title -->
+            <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 section-reveal active tracking-tight">
+                Redefining the <br/>
+                <span class="rose-gold-gradient drop-shadow-[0_4px_25px_rgba(221,162,145,0.35)]">Creator Economy</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="font-body-lg text-lg md:text-xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed mb-10 section-reveal active" style="transition-delay: 150ms;">
+                We believe in the power of influence that is purposeful, impactful, and authentic. Arika Collabs is India's premier talent management and campaign curation agency focusing on modern luxury.
+            </p>
+
+            <!-- Core Agency Pillars (Startup Authentic Highlights) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10 text-center section-reveal active" style="transition-delay: 250ms;">
+                <div class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all group flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-2 group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">verified</span>
+                    </div>
+                    <p class="font-semibold text-white text-sm mb-0.5">Handpicked Talent</p>
+                    <p class="text-[11px] uppercase tracking-wider text-on-surface-variant font-mono">Tailored Creator Curation</p>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all group flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-2 group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">bolt</span>
+                    </div>
+                    <p class="font-semibold text-white text-sm mb-0.5">Agile Execution</p>
+                    <p class="text-[11px] uppercase tracking-wider text-on-surface-variant font-mono">Fast Campaign Turnaround</p>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all group flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-2 group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">analytics</span>
+                    </div>
+                    <p class="font-semibold text-white text-sm mb-0.5">Transparent ROI</p>
+                    <p class="text-[11px] uppercase tracking-wider text-on-surface-variant font-mono">Real-Time Metrics &amp; Reports</p>
+                </div>
+
+                <div class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all group flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-2 group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">location_on</span>
+                    </div>
+                    <p class="font-semibold text-white text-sm mb-0.5">Nagpur HQ</p>
+                    <p class="text-[11px] uppercase tracking-wider text-on-surface-variant font-mono">Central Executive Office</p>
+                </div>
+            </div>
+
+            <!-- Action CTA Buttons -->
+            <div class="flex flex-wrap justify-center items-center gap-4 section-reveal active" style="transition-delay: 350ms;">
+                <a href="contact.html" class="bg-primary text-on-primary font-label-lg text-sm px-9 py-4 rounded-full btn-shine hover:shadow-[0_0_25px_rgba(221,162,145,0.5)] transition-all font-bold tracking-wider uppercase inline-flex items-center gap-2">
+                    Connect With Us <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+                <a href="#our-mission" class="glass-panel text-primary font-label-lg text-sm px-8 py-4 rounded-full border border-primary/30 hover:bg-primary/10 transition-all font-bold tracking-wider uppercase">
+                    Discover Our Story
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="our-mission" class="py-20 border-t border-white/5 bg-neutral-950">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="glass-panel p-12 rounded-2xl section-reveal">
+                <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8">
+                    <span class="material-symbols-outlined text-primary text-3xl">explore</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-md text-white mb-6">Our Mission</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Our mission is to foster synergy between innovative brands and creators across India. We leverage precise data and creative strategies to cultivate long-lasting collaborations that empower communities and drive growth.
+                </p>
+            </div>
+            <div class="glass-panel p-12 rounded-2xl section-reveal" style="transition-delay: 200ms;">
+                <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8">
+                    <span class="material-symbols-outlined text-primary text-3xl">visibility</span>
+                </div>
+                <h3 class="font-headline-lg text-headline-md text-white mb-6">Our Vision</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Our vision is to build the ultimate global standard for influencer collaboration, positioning Arika as India's premier boutique agency. We aspire to sculpt campaigns with artistic integrity and world-class quality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-20">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="text-center mb-12 section-reveal">
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">The Pillars of Arika</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">The foundations upon which we build all partnerships and campaigns.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="glass-panel p-8 rounded-2xl text-center section-reveal group hover:border-primary/40 transition-all duration-300">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-6 block">favorite</span>
+                    <h4 class="font-headline-md text-label-lg text-white mb-4">Authenticity First</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Authenticity is our core asset. We match brands with creators whose genuine voice inspires trusting relationships.</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="glass-panel p-8 rounded-2xl text-center section-reveal group hover:border-primary/40 transition-all duration-300" style="transition-delay: 150ms;">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-6 block">verified_user</span>
+                    <h4 class="font-headline-md text-label-lg text-white mb-4">Absolute Integrity</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Transparent communication and fair pricing guarantee sustainable partnerships without compromises.</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="glass-panel p-8 rounded-2xl text-center section-reveal group hover:border-primary/40 transition-all duration-300" style="transition-delay: 300ms;">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-6 block">insights</span>
+                    <h4 class="font-headline-md text-label-lg text-white mb-4">Relentless Innovation</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">We stay ahead of digital changes. Our team uses new AI tools and performance models to maximize effectiveness.</p>
+                </div>
+                <!-- Value 4 -->
+                <div class="glass-panel p-8 rounded-2xl text-center section-reveal group hover:border-primary/40 transition-all duration-300" style="transition-delay: 450ms;">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-6 block">diamond</span>
+                    <h4 class="font-headline-md text-label-lg text-white mb-4">Curated Excellence</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Only high-end, premium storytelling. We look after our brands' visual assets with extreme precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid (Why Choose Our Agency) -->
+    <section class="py-20 bg-neutral-950 border-t border-white/5">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="text-center mb-12 section-reveal">
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Why Choose Our Agency</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">How our boutique approach consistently delivers elite-tier outcomes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Bento Item 1 (Wide) -->
+                <div class="md:col-span-2 glass-panel p-12 rounded-2xl flex flex-col justify-between section-reveal">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-4xl mb-6">handshake</span>
+                        <h4 class="font-headline-lg text-headline-md text-white mb-4">Strategic Alignment</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            We don't match people based on shallow metrics. We align brand DNA with creators who natively inhabit the target audience, establishing immediate prestige.
+                        </p>
+                    </div>
+                    <div class="mt-8 border-t border-white/5 pt-6 text-primary text-sm font-semibold tracking-wider">01 / PRECISE ALIGNMENT</div>
+                </div>
+
+                <!-- Bento Item 2 (Tall/Standard) -->
+                <div class="glass-panel p-12 rounded-2xl flex flex-col justify-between section-reveal" style="transition-delay: 200ms;">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-4xl mb-6">brush</span>
+                        <h4 class="font-headline-lg text-headline-md text-white mb-4">Aesthetic Control</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Every asset is reviewed by our creative directors. We maintain a high-fashion, high-standard visual discipline.
+                        </p>
+                    </div>
+                    <div class="mt-8 border-t border-white/5 pt-6 text-primary text-sm font-semibold tracking-wider">02 / VISUAL INTEGRITY</div>
+                </div>
+
+                <!-- Bento Item 3 (Tall/Standard) -->
+                <div class="glass-panel p-12 rounded-2xl flex flex-col justify-between section-reveal">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-4xl mb-6">analytics</span>
+                        <h4 class="font-headline-lg text-headline-md text-white mb-4">Analytics Integrity</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Clean metrics. No fake followers, no bots. Just pure, organic, highly-convertible attention.
+                        </p>
+                    </div>
+                    <div class="mt-8 border-t border-white/5 pt-6 text-primary text-sm font-semibold tracking-wider">03 / TRUTH IN DATA</div>
+                </div>
+
+                <!-- Bento Item 4 (Wide) -->
+                <div class="md:col-span-2 glass-panel p-12 rounded-2xl flex flex-col justify-between section-reveal" style="transition-delay: 200ms;">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-4xl mb-6">workspace_premium</span>
+                        <h4 class="font-headline-lg text-headline-md text-white mb-4">Bespoke Talent Network</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            We preserve exclusive channels to premium Indian and global creators, bypassing middle agencies to deliver raw, unfiltered engagement.
+                        </p>
+                    </div>
+                    <div class="mt-8 border-t border-white/5 pt-6 text-primary text-sm font-semibold tracking-wider">04 / ELITE NETWORK</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Leadership Section -->
+    <section class="py-20 border-t border-white/5">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="text-center mb-12 section-reveal">
+                <span class="text-primary font-jakarta font-bold text-xs uppercase tracking-[0.2em] mb-3 block">Agency Leadership</span>
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Guided by Vision &amp; Strategy</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Steering brands and creators toward genuine digital resonance.</p>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <div class="glass-panel p-8 rounded-2xl text-center section-reveal group hover:border-primary/50 transition-all duration-300">
+                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-primary mb-6 shadow-[0_0_20px_rgba(221,162,145,0.25)] group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB897SP2ObJgI7QBavXyE0dBztZZ6Jrwt4EpyTQgo-ePsnrriGwEEA0AJXbi0eWzxBqFjzlTgMNV7qbqIjiTwBdq861J6l_JKTal71NCWggVNX6sNsdvBBzWG65WyglZVogAQYMRWWIh2NJojc7KAuT9NOrdrgaXdahmwZi8kfMlP7ZsSQWoY3rzwvsidBjiWe8Fmonr5gosBxJP7BwCOeltgz1z678WDlLHGhjTLhGrsemIJ0z5NMIQeHGCbfHwb_f1rq_PMUP3qA" alt="Sanjana Jenekar"/>
+                    </div>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-1">Sanjana Jenekar</h3>
+                    <p class="text-primary font-jakarta text-xs uppercase tracking-widest font-semibold mb-4">Marketing Director</p>
+                    <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                        Leading strategic direction, campaign innovation, and high-impact brand partnerships at Arika Collabs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready to Collab CTA -->
+    <section class="py-20 text-center relative overflow-hidden">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10">
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-display-lg text-white mb-8 section-reveal">Ready to Collab?</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-12 section-reveal" style="transition-delay: 200ms;">
+                Let's construct your legacy of digital influence. Join Arika's luxury network today.
+            </p>
+            <div class="section-reveal" style="transition-delay: 400ms;">
+                <a class="bg-primary text-on-primary px-10 py-5 rounded-full font-label-lg text-label-lg hover:shadow-[0_0_20px_rgba(221,162,145,0.4)] transition-all" href="contact.html">APPLY AS TALENT / BRAND</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-10">
+            <div class="md:col-span-2">
+                <div class="font-display-lg text-primary font-bold text-[32px] mb-6">ARIKA COLLABS</div>
+                <p class="text-on-surface-variant max-w-sm mb-8">
+                    The premier agency for luxury influencer marketing. Engineering growth for world-class creators and brands.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="https://www.instagram.com/arika_collabs/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="https://www.linkedin.com/in/arika-collabs" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="mailto:support@arikacollabs.com" aria-label="Email">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h6 class="font-label-lg text-label-lg text-white mb-6 uppercase tracking-widest">Navigation</h6>
+                <ul class="space-y-4">
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="index.html">Home</a></li>
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="services.html">Services</a></li>
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-label-lg text-label-lg text-white mb-6 uppercase tracking-widest">Legal</h6>
+                <ul class="space-y-4">
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a></li>
+                    <li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mt-10 pt-6 border-t border-white/5 text-center">
+            <p class="text-on-surface-variant text-[12px] opacity-60">© 2024 ARIKA COLLABS. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Page Script -->
+    <script type="module" src="./js/about.ts"></script>
+</body>
+</html>

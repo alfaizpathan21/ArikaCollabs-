@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&family=Outfit:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-syne {
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-outfit {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.text-glow-rose {
+  text-shadow: 0 0 25px rgba(221, 162, 145, 0.4), 0 0 50px rgba(198, 136, 120, 0.2);
+}
+
+@theme {
+  --color-primary: #DDA291;
+  --color-primary-container: #C68878;
+  --color-on-primary: #0F0F0E;
+  --color-on-primary-container: #F8F6F5;
+
+  --color-secondary: #C68878;
+  --color-secondary-container: #1A1A1A;
+
+  --color-tertiary: #A56D60;
+  --color-tertiary-container: #6E5049;
+
+  --color-deep-accent: #6E5049;
+  --color-dark-bronze: #6E5049;
+
+  --color-background: #0F0F0E;
+  --color-on-background: #F8F6F5;
+
+  --color-surface: #0F0F0E;
+  --color-surface-dim: #0F0F0E;
+  --color-surface-bright: #1A1A1A;
+  --color-surface-container-lowest: #0F0F0E;
+  --color-surface-container-low: #0F0F0E;
+  --color-surface-container: #1A1A1A;
+  --color-surface-container-high: #1A1A1A;
+  --color-surface-container-highest: #1A1A1A;
+
+  --color-on-surface: #F8F6F5;
+  --color-on-surface-variant: #B9B9B9;
+
+  --color-outline: #6E5049;
+  --color-outline-variant: rgba(110, 80, 73, 0.4);
+
+  --color-matte-black: #0F0F0E;
+  --color-charcoal-black: #1A1A1A;
+  --color-rose-gold: #DDA291;
+  --color-copper-rose: #C68878;
+  --color-bronze-rose: #A56D60;
+  --color-soft-white: #F8F6F5;
+  --color-light-grey: #B9B9B9;
+}
+
+/* Premium Subtle Fade-In-Up Scroll Reveal Animation */
+.reveal,
+.section-reveal,
+.scroll-reveal,
+.reveal-on-scroll,
+.animate-on-scroll,
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active,
+.reveal.visible,
+.reveal.is-visible,
+.section-reveal.active,
+.scroll-reveal.active,
+.reveal-on-scroll.active,
+.reveal-on-scroll.visible,
+.animate-on-scroll.active,
+.fade-in-up.active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Luxury Rose Gold Gradients & Card Effects */
+.rose-gold-gradient {
+  background: linear-gradient(135deg, #F8F6F5 0%, #DDA291 50%, #C68878 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rose-gold-text-shimmer {
+  background: linear-gradient(90deg, #DDA291 0%, #FFF 50%, #C68878 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.glass-panel {
+  background: rgba(26, 26, 26, 0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(221, 162, 145, 0.18);
+}
+
+.why-choose-card {
+  position: relative;
+  background: rgba(20, 18, 17, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(221, 162, 145, 0.2);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.why-choose-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #DDA291, transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.why-choose-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(221, 162, 145, 0.55);
+  box-shadow: 0 20px 40px -15px rgba(221, 162, 145, 0.15), 0 0 30px rgba(221, 162, 145, 0.08);
+}
+
+.why-choose-card:hover::before {
+  opacity: 1;
+}
+
+/* Horizontal Animated Timeline Styles */
+.timeline-track-bg {
+  background: linear-gradient(90deg, rgba(221, 162, 145, 0.15) 0%, rgba(221, 162, 145, 0.4) 50%, rgba(221, 162, 145, 0.15) 100%);
+}
+
+.timeline-line-pulse {
+  background: linear-gradient(90deg, transparent 0%, #DDA291 50%, #FFF 70%, #DDA291 90%, transparent 100%);
+  background-size: 200% 100%;
+  animation: pulseBeam 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseBeam {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.timeline-card {
+  position: relative;
+  background: rgba(20, 18, 17, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(221, 162, 145, 0.22);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(221, 162, 145, 0.6);
+  box-shadow: 0 16px 36px -10px rgba(221, 162, 145, 0.2), 0 0 25px rgba(221, 162, 145, 0.1);
+}
+
+.timeline-card:hover .timeline-node {
+  background-color: #DDA291;
+  box-shadow: 0 0 20px #DDA291, 0 0 35px rgba(221, 162, 145, 0.6);
+  transform: scale(1.3);
+}
+
+/* Hide scrollbar for smooth horizontal timeline while retaining scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Luxury Splash Screen Animations */
+@keyframes logoDropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-240px) scale(0.6) rotateX(30deg);
+    filter: blur(12px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(14px) scale(1.06) rotateX(-6deg);
+    filter: blur(0px);
+  }
+  80% {
+    transform: translateY(-6px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes dropImpactRipple {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.splash-logo-drop {
+  animation: logoDropIn 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+}
+
+.splash-drop-ripple {
+  animation: dropImpactRipple 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) 0.55s forwards;
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.25; transform: scale(0.95); }
+  50% { opacity: 0.45; transform: scale(1.05); }
+}
+
+@keyframes metallicShine {
+  0% { transform: translateX(-150%) skewX(-12deg); }
+  100% { transform: translateX(150%) skewX(-12deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 16s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 22s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
+.splash-shine-sweep {
+  animation: metallicShine 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.bg-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+/* ==========================================
+   Horizontal Timeline Scrollbar Styling
+   ========================================== */
+.timeline-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #DDA291 rgba(255, 255, 255, 0.08);
+}
+
+.timeline-scrollbar::-webkit-scrollbar {
+  height: 10px;
+  display: block !important;
+}
+
+.timeline-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  border: 1px solid rgba(221, 162, 145, 0.2);
+  margin: 0 0.5rem;
+}
+
+.timeline-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #A56D60 0%, #C68878 50%, #DDA291 100%);
+  border-radius: 9999px;
+  border: 2px solid #0A0A09;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.timeline-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #DDA291;
+  box-shadow: 0 0 15px rgba(221, 162, 145, 0.6);
+}
+
+.timeline-scrollbar::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+  background: #FFFFFF;
+}
+
+html.light .timeline-scrollbar {
+  scrollbar-color: #C68878 rgba(198, 136, 120, 0.15);
+}
+
+html.light .timeline-scrollbar::-webkit-scrollbar-track {
+  background: rgba(198, 136, 120, 0.12);
+  border: 1px solid rgba(198, 136, 120, 0.25);
+}
+
+html.light .timeline-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #A56D60 0%, #C68878 100%);
+  border: 2px solid #FAF8F6;
+}
+
+html.light .timeline-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C68878;
+  box-shadow: 0 0 12px rgba(198, 136, 120, 0.4);
+}
+
+/* ==========================================
+   Minimalist Light Theme Overrides
+   ========================================== */
+html.light {
+  color-scheme: light;
+  --color-primary: #C68878;
+  --color-primary-container: #DDA291;
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-container: #121110;
+
+  --color-secondary: #A56D60;
+  --color-secondary-container: #F4F0EB;
+
+  --color-tertiary: #A56D60;
+  --color-tertiary-container: #DFD8CD;
+
+  --color-deep-accent: #C68878;
+  --color-dark-bronze: #A56D60;
+
+  --color-background: #FAF8F6;
+  --color-on-background: #121110;
+
+  --color-surface: #FAF8F6;
+  --color-surface-dim: #F4F0EB;
+  --color-surface-bright: #FFFFFF;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F8F5F1;
+  --color-surface-container: #F0EAE1;
+  --color-surface-container-high: #E8E2D9;
+  --color-surface-container-highest: #DFD8CD;
+
+  --color-on-surface: #121110;
+  --color-on-surface-variant: #5C5855;
+
+  --color-outline: #C68878;
+  --color-outline-variant: rgba(198, 136, 120, 0.3);
+
+  --color-matte-black: #FAF8F6;
+  --color-charcoal-black: #FFFFFF;
+  --color-rose-gold: #C68878;
+  --color-copper-rose: #A56D60;
+  --color-bronze-rose: #8C584C;
+  --color-soft-white: #121110;
+  --color-light-grey: #5C5855;
+}
+
+html.light,
+html.light body {
+  background-color: #FAF8F6 !important;
+  color: #121110 !important;
+}
+
+/* Navbar in Light Mode */
+html.light nav {
+  background-color: rgba(250, 248, 246, 0.9) !important;
+  border-bottom-color: rgba(198, 136, 120, 0.25) !important;
+  box-shadow: 0 4px 25px rgba(198, 136, 120, 0.08) !important;
+}
+
+html.light nav a.nav-link {
+  color: #3D3935 !important;
+}
+
+html.light nav a.nav-link:hover,
+html.light nav a.nav-link.active {
+  color: #C68878 !important;
+}
+
+/* Glass Panels & Cards in Light Mode */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(198, 136, 120, 0.3) !important;
+  box-shadow: 0 10px 30px -8px rgba(198, 136, 120, 0.15), 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light .why-choose-card,
+html.light .timeline-card,
+html.light .instagram-card,
+html.light .service-card,
+html.light .portfolio-card,
+html.light .team-card,
+html.light .contact-card {
+  background-color: #FFFFFF !important;
+  border-color: rgba(198, 136, 120, 0.3) !important;
+  box-shadow: 0 10px 30px -10px rgba(198, 136, 120, 0.15), 0 2px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .why-choose-card:hover,
+html.light .timeline-card:hover,
+html.light .instagram-card:hover,
+html.light .service-card:hover,
+html.light .portfolio-card:hover,
+html.light .team-card:hover {
+  border-color: #C68878 !important;
+  box-shadow: 0 18px 45px -10px rgba(198, 136, 120, 0.3), 0 0 20px rgba(198, 136, 120, 0.1) !important;
+}
+
+/* Background Section Overrides for Light Mode */
+html.light section,
+html.light section.bg-black,
+html.light section.bg-\[\#0F0F0E\],
+html.light section.bg-\[\#0A0A09\],
+html.light section.bg-surface,
+html.light section.bg-surface-container-lowest,
+html.light div.bg-black,
+html.light div.bg-\[\#0F0F0E\],
+html.light div.bg-\[\#141211\],
+html.light div.bg-\[\#1A1817\],
+html.light div.bg-\[\#1A1A1A\],
+html.light div.bg-surface,
+html.light footer,
+html.light footer.bg-\[\#0F0F0E\] {
+  background-color: #FAF8F6 !important;
+}
+
+html.light header,
+html.light header.bg-\[\#0F0F0E\]\/60 {
+  background-color: rgba(250, 248, 246, 0.88) !important;
+  border-bottom-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light div.bg-\[\#141211\],
+html.light div.bg-\[\#1A1817\],
+html.light div.bg-\[\#1A1A1A\] {
+  background-color: #FFFFFF !important;
+}
+
+/* Text and Headings in Light Mode */
+html.light .text-white,
+html.light .text-soft-white,
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
+  color: #121110 !important;
+}
+
+html.light .text-on-surface-variant,
+html.light .text-gray-300,
+html.light .text-gray-400,
+html.light .text-slate-300,
+html.light .text-slate-400,
+html.light .text-light-grey {
+  color: #5C5855 !important;
+}
+
+html.light .text-primary {
+  color: #C68878 !important;
+}
+
+/* Rich Rose Gold Text Gradients in Light Mode */
+html.light .rose-gold-gradient {
+  background: linear-gradient(135deg, #121110 0%, #A56D60 50%, #C68878 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html.light .rose-gold-text-shimmer {
+  background: linear-gradient(90deg, #A56D60 0%, #121110 50%, #C68878 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Borders in Light Mode */
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/20,
+html.light .border-white\/30 {
+  border-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+/* Inputs, Textareas, Selects in Light Mode */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  color: #121110 !important;
+  border-color: rgba(198, 136, 120, 0.35) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #8C8783 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #C68878 !important;
+  box-shadow: 0 0 0 3px rgba(198, 136, 120, 0.2) !important;
+}
+
+/* Primary Buttons in Light Mode */
+html.light .bg-primary {
+  background-color: #C68878 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .bg-primary:hover {
+  background-color: #A56D60 !important;
+}
+
+html.light .text-on-primary {
+  color: #FFFFFF !important;
+}
+
+/* Mobile Menu & Theme Toggle in Light Mode */
+html.light #mobile-menu {
+  background-color: rgba(250, 248, 246, 0.98) !important;
+  border-left-color: rgba(198, 136, 120, 0.3) !important;
+}
+
+html.light #theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(198, 136, 120, 0.4) !important;
+  color: #A56D60 !important;
+}
+
+html.light #back-to-top-btn {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(198, 136, 120, 0.5) !important;
+  color: #A56D60 !important;
+  box-shadow: 0 10px 25px rgba(165, 109, 96, 0.2) !important;
+}
+
+html.light #back-to-top-btn:hover {
+  background-color: #A56D60 !important;
+  color: #FFFFFF !important;
+  border-color: #A56D60 !important;
+}
+
+html.light #back-to-top-btn span:last-child {
+  background-color: #FAF8F6 !important;
+  border-color: rgba(198, 136, 120, 0.4) !important;
+  color: #121110 !important;
+}
+
+html.light .mobile-social-icon {
+  background-color: #FFFFFF !important;
+  border-color: rgba(198, 136, 120, 0.4) !important;
+  color: #A56D60 !important;
+}
+
+html.light .mobile-social-icon:hover {
+  background-color: #A56D60 !important;
+  color: #FFFFFF !important;
+  border-color: #A56D60 !important;
+}
+
+/* Premium Service Cards Staggered Entrance Animation & Micro-Interactions */
+.service-card {
+  opacity: 0;
+  transform: translateY(48px) scale(0.95);
+  filter: blur(8px);
+  will-change: opacity, transform, filter;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              background-color 0.4s ease;
+}
+
+.service-card.active,
+.service-card.visible,
+.service-card.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0px) !important;
+}
+
+/* Service Card Icon Box Micro-Stagger Spring Effect */
+.service-card .service-icon-box {
+  transform: scale(0.75) translateY(12px) rotate(-8deg);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s,
+              opacity 0.6s ease 0.18s,
+              background-color 0.3s ease;
+}
+
+.service-card.active .service-icon-box,
+.service-card.visible .service-icon-box,
+.service-card.is-visible .service-icon-box {
+  transform: scale(1) translateY(0) rotate(0deg);
+  opacity: 1;
+}
+
+/* Service Card Luxury Hover Interactions */
+.service-card:hover {
+  transform: translateY(-8px) scale(1.015) !important;
+  border-color: rgba(221, 162, 145, 0.55) !important;
+  box-shadow: 0 20px 45px -12px rgba(221, 162, 145, 0.22), 0 0 35px rgba(221, 162, 145, 0.12) !important;
+}
+
+.service-card:hover .service-icon-box {
+  transform: scale(1.12) rotate(-4deg) !important;
+  background-color: rgba(221, 162, 145, 0.25) !important;
+}
+
+html.light .service-card:hover {
+  border-color: rgba(198, 136, 120, 0.6) !important;
+  box-shadow: 0 20px 45px -10px rgba(198, 136, 120, 0.25), 0 0 25px rgba(198, 136, 120, 0.1) !important;
+}
+
+/* Scroll-triggered Navbar Blur & Depth Enhancement */
+nav.fixed,
+header.fixed {
+  will-change: backdrop-filter, background-color, border-color, box-shadow;
+  transition: backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.navbar-scrolled {
+  background-color: rgba(15, 15, 14, 0.82) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-bottom-color: rgba(221, 162, 145, 0.25) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.navbar-past-hero {
+  background-color: rgba(15, 15, 14, 0.92) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-bottom-color: rgba(221, 162, 145, 0.45) !important;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.75), 0 0 25px rgba(221, 162, 145, 0.12) !important;
+}
+
+/* Light Theme Overrides for Scroll-Triggered Navbar */
+html.light .navbar-scrolled {
+  background-color: rgba(250, 248, 246, 0.88) !important;
+  border-bottom-color: rgba(198, 136, 120, 0.35) !important;
+  box-shadow: 0 10px 25px -10px rgba(165, 109, 96, 0.15) !important;
+}
+
+html.light .navbar-past-hero {
+  background-color: rgba(250, 248, 246, 0.96) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-bottom-color: rgba(198, 136, 120, 0.55) !important;
+  box-shadow: 0 14px 35px -10px rgba(165, 109, 96, 0.25), 0 0 20px rgba(198, 136, 120, 0.1) !important;
+}
+
+
+
+

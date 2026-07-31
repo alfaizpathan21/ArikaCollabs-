@@ -1,0 +1,225 @@
+@import "../src/index.css";
+
+body {
+    background-color: #0F0F0E;
+    color: #F8F6F5;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+.glass-panel {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(110, 80, 73, 0.4);
+}
+.rose-gold-text {
+    background: linear-gradient(135deg, #DDA291 0%, #C68878 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.rose-gold-border {
+    border-image: linear-gradient(to right, #DDA291, #C68878) 1;
+}
+.faq-accordion[open] .faq-icon {
+    transform: rotate(180deg);
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #DDA291 !important;
+    box-shadow: 0 0 15px rgba(221, 162, 145, 0.3);
+}
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #0F0F0E;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #C68878;
+}
+
+/* Mobile menu slideout styles */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Premium luxury hover effect for navbar links */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #DDA291; /* Rose Gold */
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* If active, underline is fully displayed */
+.nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Premium interactive hover & click effect for buttons */
+.navbar-btn-interactive {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center;
+}
+
+.navbar-btn-interactive:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(221, 162, 145, 0.5);
+}
+
+.navbar-btn-interactive:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(221, 162, 145, 0.3);
+}
+
+/* Tactile active click effect for mobile burger and close buttons */
+#mobile-menu-btn, #mobile-menu-close-btn {
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+#mobile-menu-btn:active, #mobile-menu-close-btn:active {
+    transform: scale(0.85);
+}
+
+/* ==========================================
+   Contact Page Light Mode Theme Overrides
+   ========================================== */
+html.light body {
+    background-color: #FAF8F6 !important;
+    color: #121110 !important;
+}
+
+html.light header {
+    background-color: rgba(250, 248, 246, 0.88) !important;
+    border-bottom-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light section,
+html.light section.bg-black,
+html.light section.bg-\[\#0F0F0E\],
+html.light section.bg-\[\#1A1A1A\] {
+    background-color: #FAF8F6 !important;
+    border-top-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light footer,
+html.light footer.bg-\[\#0F0F0E\] {
+    background-color: #FAF8F6 !important;
+    border-top-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light .glass-panel {
+    background: #FFFFFF !important;
+    border-color: rgba(198, 136, 120, 0.3) !important;
+    box-shadow: 0 10px 30px -10px rgba(198, 136, 120, 0.15), 0 2px 10px rgba(0,0,0,0.02) !important;
+}
+
+html.light .glass-panel:hover {
+    border-color: #C68878 !important;
+    box-shadow: 0 15px 35px -10px rgba(198, 136, 120, 0.22) !important;
+}
+
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6, html.light .text-white {
+    color: #121110 !important;
+}
+
+html.light p, html.light .text-on-surface-variant {
+    color: #5C5855 !important;
+}
+
+html.light .rose-gold-gradient {
+    background: linear-gradient(135deg, #121110 0%, #A56D60 50%, #C68878 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html.light .nav-link {
+    color: #3D3935 !important;
+}
+
+html.light .nav-link:hover,
+html.light .nav-link.active {
+    color: #C68878 !important;
+}
+
+/* Form Inputs & Selects in Light Mode */
+html.light input,
+html.light select,
+html.light textarea,
+html.light input.bg-\[\#1A1A1A\],
+html.light select.bg-\[\#1A1A1A\],
+html.light textarea.bg-\[\#1A1A1A\] {
+    background-color: #F4F0EC !important;
+    border-color: rgba(198, 136, 120, 0.35) !important;
+    color: #121110 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+    color: #8C8681 !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+    border-color: #C68878 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(198, 136, 120, 0.15) !important;
+}
+
+html.light select option {
+    background-color: #FFFFFF !important;
+    color: #121110 !important;
+}
+
+/* FAQ Accordion in Light Mode */
+html.light .faq-accordion,
+html.light .faq-accordion.bg-\[\#0F0F0E\] {
+    background-color: #FFFFFF !important;
+    border-color: rgba(198, 136, 120, 0.25) !important;
+    box-shadow: 0 4px 20px rgba(198, 136, 120, 0.08) !important;
+}
+
+html.light .faq-accordion summary {
+    color: #121110 !important;
+}
+
+html.light .faq-accordion div {
+    border-top-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+/* Map iFrame adjustment for Light Mode */
+html.light iframe {
+    filter: grayscale(0.2) opacity(0.9) !important;
+}
+
+/* Quick Topic Pills in Light Mode */
+html.light .inquiry-topic-pill {
+    background-color: #FFFFFF !important;
+    border-color: rgba(198, 136, 120, 0.3) !important;
+    color: #3D3935 !important;
+}
+
+html.light .inquiry-topic-pill:hover {
+    border-color: #C68878 !important;
+    color: #C68878 !important;
+    background-color: rgba(198, 136, 120, 0.08) !important;
+}
+
+
+
+

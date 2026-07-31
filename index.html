@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ARIKA COLLABS | Luxury Influencer Marketing</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="./css/home.css" />
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary">
+
+    <!-- Slim Scroll Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-[3px] bg-white/5 z-[100] pointer-events-none">
+        <div id="scroll-progress" class="h-full w-0 bg-primary shadow-[0_0_8px_#DDA291] transition-all duration-75"></div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop py-4 flex justify-between items-center">
+            <a class="font-display-lg text-primary tracking-tighter text-xl md:text-2xl font-bold" href="index.html">ARIKA COLLABS</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-primary font-bold font-label-lg text-label-lg nav-link active" href="index.html">HOME</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="services.html">SERVICES</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="portfolio.html">PORTFOLIO</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg nav-link" href="about.html">ABOUT US</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <!-- High-End Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="inline-flex items-center justify-center w-9 h-9 rounded-full glass-panel text-[#DDA291] border border-[#DDA291]/30 hover:border-[#DDA291] hover:shadow-[0_0_15px_rgba(221,162,145,0.3)] transition-all cursor-pointer group" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+                    <div class="relative w-5 h-5 flex items-center justify-center">
+                        <span id="theme-icon-sun" class="material-symbols-outlined text-amber-400 text-lg absolute transition-all duration-300 hidden scale-0">light_mode</span>
+                        <span id="theme-icon-moon" class="material-symbols-outlined text-[#DDA291] text-lg absolute transition-all duration-300 block scale-100">bedtime</span>
+                    </div>
+                </button>
+                <button id="replay-splash-btn" class="hidden sm:inline-flex items-center gap-1.5 glass-panel text-xs text-[#DDA291] font-mono px-3.5 py-1.5 rounded-full border border-[#DDA291]/30 hover:bg-[#DDA291] hover:text-black transition-all" title="Replay Opening Animation">
+                    <span class="material-symbols-outlined text-sm animate-spin-slow">play_circle</span>
+                    <span>Replay Intro</span>
+                </button>
+                <a class="hidden sm:inline-block bg-primary-container text-on-primary font-label-lg text-label-lg px-6 py-2 rounded-full btn-shine hover:shadow-[0_0_20px_rgba(221,162,145,0.4)] transition-all navbar-btn-interactive" href="contact.html">
+                    CONTACT
+                </a>
+                <!-- Mobile burger button -->
+                <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-white">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-surface-container-lowest/95 backdrop-blur-lg translate-x-full transition-transform duration-300 md:hidden flex flex-col p-8 shadow-2xl border-l border-outline-variant/25 overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
+            <span class="font-display-lg text-primary text-xl font-bold tracking-wider">ARIKA COLLABS</span>
+            <button id="mobile-menu-close-btn" class="text-primary hover:text-white p-1 rounded-lg transition-colors cursor-pointer" aria-label="Close menu">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-5 text-left mb-6">
+            <a class="text-primary font-bold text-xl border-l-2 border-primary pl-4" href="index.html">HOME</a>
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="services.html">SERVICES</a>
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-on-surface-variant hover:text-primary text-xl pl-4 transition-colors" href="about.html">ABOUT US</a>
+            <button id="mobile-theme-toggle-btn" class="flex items-center justify-between p-3.5 rounded-xl border border-[#DDA291]/30 glass-panel text-[#DDA291] font-mono text-sm mt-2 cursor-pointer">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">palette</span>
+                    <span>Theme</span>
+                </span>
+                <span id="mobile-theme-toggle-status" class="text-xs font-bold px-3 py-1 rounded-full bg-[#DDA291]/15 border border-[#DDA291]/30">
+                    Dark Luxury
+                </span>
+            </button>
+            <a class="mt-4 bg-primary text-on-primary text-center py-3 rounded-full font-bold btn-shine navbar-btn-interactive" href="contact.html">CONTACT NOW</a>
+        </div>
+
+        <!-- Quick Links & Socials Footer -->
+        <div class="mt-auto pt-6 border-t border-outline-variant/25 flex flex-col gap-5">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-primary/90 mb-3 block font-semibold">Quick Links</span>
+                <div class="grid grid-cols-2 gap-2 text-xs font-mono text-on-surface-variant">
+                    <a href="services.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Services</a>
+                    <a href="portfolio.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Case Studies</a>
+                    <a href="about.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Our Story</a>
+                    <a href="contact.html" class="hover:text-primary transition-colors flex items-center gap-1.5"><span class="text-[#DDA291]">•</span> Contact</a>
+                </div>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="flex items-center gap-3 pt-1">
+                <a href="https://www.instagram.com/arika_collabs/" target="_blank" rel="noopener" aria-label="Instagram" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/arika-collabs" target="_blank" rel="noopener" aria-label="LinkedIn" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:support@arikacollabs.com" aria-label="Email" class="mobile-social-icon w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 flex items-center justify-center text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] transition-all duration-300">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="text-[11px] font-mono text-on-surface-variant/70 pt-2 border-t border-outline-variant/10">
+                © 2026 ARIKA COLLABS. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal active">
+                <!-- Luxury Glowing Eyebrow Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-jakarta font-bold text-xs uppercase tracking-[0.22em] mb-6 shadow-[0_0_20px_rgba(221,162,145,0.15)] hover:border-primary/60 transition-all cursor-default">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#DDA291]"></span>
+                    <span>Elite Influencer Marketing</span>
+                </div>
+
+                <!-- High-Fashion Typography Headline -->
+                <h1 class="font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-[66px] text-white font-extrabold leading-[1.08] tracking-tight mb-6">
+                    Influencer Marketing <br/>
+                    That Delivers <br/>
+                    <span class="font-serif-luxury italic text-glow-rose rose-gold-text-shimmer font-normal tracking-normal text-5xl sm:text-6xl md:text-7xl lg:text-[76px] inline-block pt-1">
+                        Real Results
+                    </span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="font-jakarta text-base sm:text-lg text-on-surface-variant/90 leading-relaxed mb-10 max-w-xl font-normal">
+                    Bridging the gap between high-end digital talent and luxury brands. We engineer curated campaigns that redefine authority and scale your brand's presence globally.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a class="bg-primary text-on-primary font-jakarta font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-full btn-shine hover:shadow-[0_0_25px_rgba(221,162,145,0.45)] hover:scale-[1.02] transition-all" href="contact.html">
+                        GET STARTED
+                    </a>
+                    <a class="glass-panel text-primary font-jakarta font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-full border border-primary/30 hover:bg-primary/10 transition-all text-center hover:scale-[1.02]" href="contact.html">
+                        CONTACT US
+                    </a>
+                </div>
+            </div>
+            <div class="relative reveal active w-full h-[380px] sm:h-[450px] lg:h-[550px] flex items-center justify-center cursor-grab active:cursor-grabbing" style="transition-delay: 200ms;">
+                <!-- Soft ambient lighting and glow effect behind the logo -->
+                <div class="absolute inset-0 m-auto w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#DDA291]/20 via-[#C68878]/15 to-transparent rounded-full blur-3xl pointer-events-none z-0"></div>
+                <div class="absolute inset-0 m-auto w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 bg-primary/10 rounded-full blur-2xl pointer-events-none z-0"></div>
+
+                <!-- 3D Logo Canvas Container -->
+                <div id="hero-3d-logo-container" class="relative z-10 w-full h-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Core Startup Strengths Section -->
+    <section class="py-16 bg-surface-container-lowest border-y border-white/5">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="fade-in-up glass-panel p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3">
+                        <span class="material-symbols-outlined text-2xl">verified</span>
+                    </div>
+                    <div class="font-headline-sm text-base font-bold text-white mb-1">Tailored Curation</div>
+                    <div class="text-xs uppercase tracking-wider text-on-surface-variant font-mono">Handpicked Creator Match</div>
+                </div>
+                <div class="fade-in-up glass-panel p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all flex flex-col items-center justify-center" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3">
+                        <span class="material-symbols-outlined text-2xl">bolt</span>
+                    </div>
+                    <div class="font-headline-sm text-base font-bold text-white mb-1">Agile Execution</div>
+                    <div class="text-xs uppercase tracking-wider text-on-surface-variant font-mono">Rapid Campaign Launch</div>
+                </div>
+                <div class="fade-in-up glass-panel p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all flex flex-col items-center justify-center" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3">
+                        <span class="material-symbols-outlined text-2xl">support_agent</span>
+                    </div>
+                    <div class="font-headline-sm text-base font-bold text-white mb-1">1-on-1 Support</div>
+                    <div class="text-xs uppercase tracking-wider text-on-surface-variant font-mono">Dedicated Strategist</div>
+                </div>
+                <div class="fade-in-up glass-panel p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all flex flex-col items-center justify-center" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3">
+                        <span class="material-symbols-outlined text-2xl">analytics</span>
+                    </div>
+                    <div class="font-headline-sm text-base font-bold text-white mb-1">Honest Analytics</div>
+                    <div class="text-xs uppercase tracking-wider text-on-surface-variant font-mono">Transparent Performance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="py-20 relative">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="reveal">
+                <div class="w-full aspect-video glass-panel overflow-hidden rounded-xl">
+                    <img class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX2gV2nXu3M4zzW6zIDbUkyaGIJO-6mEhT6HQkV3u21LpgWo6k9-tZCI30HDHuSM0whV5s_0Au8GQ7iD6PAkBod_R99GP4QXTgZ1L50sOANzwfyvG2ywbTMbUs_RStX1f0rfMgkQxBkMlDJxqgA0ftgEJbww_i5k-LcYjxsv66dp7LstCBS4Y9t5OWBiFZ_KLqeZC5ZcNTK1hTIDSjY6cZUMw5ftLYlNITs1OjXW2uQ4jltcubJMSvnDYsVtULLP99wolkMl_COB8" alt="Sleek Modern Agency Office"/>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">Redefining the <br/><span class="rose-gold-gradient">Influencer Paradigm</span></h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                    Arika Collabs isn't just another agency. We are architects of influence. We combine data-driven precision with high-fashion aesthetics to create stories that convert.
+                </p>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                    Our mission is to empower both creators and brands to achieve sustainable, meaningful growth through authentic partnerships that resonate on a global scale.
+                </p>
+                <a class="inline-flex items-center gap-2 text-primary font-label-lg text-label-lg group" href="about.html">
+                    LEARN MORE ABOUT OUR VISION
+                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+            <div class="mb-20 text-center reveal">
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Our Premium Services</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 services-stagger-grid" data-stagger-delay="160">
+                <!-- Service Card 1 -->
+                <div class="service-card glass-panel p-10 rounded-2xl group hover:border-primary/40 transition-all duration-500 cursor-pointer" data-stagger-item>
+                    <div class="service-icon-box w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-4xl">campaign</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Campaign Strategy</h3>
+                    <p class="text-on-surface-variant font-body-md text-body-md">Tailored end-to-end strategies designed to align with your brand's exclusive objectives and aesthetic values.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="service-card glass-panel p-10 rounded-2xl group hover:border-primary/40 transition-all duration-500 cursor-pointer" data-stagger-item>
+                    <div class="service-icon-box w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-4xl">groups</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Talent Sourcing</h3>
+                    <p class="text-on-surface-variant font-body-md text-body-md">Direct access to a curated network of top-tier creators across lifestyle, luxury, tech, and creative sectors.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="service-card glass-panel p-10 rounded-2xl group hover:border-primary/40 transition-all duration-500 cursor-pointer" data-stagger-item>
+                    <div class="service-icon-box w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-4xl">monitoring</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Analytics &amp; ROI</h3>
+                    <p class="text-on-surface-variant font-body-md text-body-md">Deep-dive performance reporting with transparent metrics that prove the tangible value of every collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Why Choose ARIKA Section -->
+    <section class="py-20 bg-surface relative overflow-hidden">
+        <!-- Ambient background lighting bloom -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#DDA291]/5 blur-[140px] pointer-events-none rounded-full"></div>
+
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10">
+            <!-- Header -->
+            <div class="mb-20 text-center reveal">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 text-xs font-bold tracking-widest uppercase text-primary mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Why Choose ARIKA COLLABS
+                </span>
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">
+                    Engineered for <span class="rose-gold-gradient">Iconic Brand Growth</span>
+                </h2>
+                <p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mx-auto leading-relaxed">
+                    We combine high-fashion aesthetic standards, rigorous algorithmic verification, and white-glove campaign management to deliver unmatched influencer marketing ROI.
+                </p>
+            </div>
+
+            <!-- Interactive 6-Feature Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Feature Card 1: Premium Influencer Network -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">diamond</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">01</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            Premium Influencer Network
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Direct, exclusive access to top-tier, highly influential visionaries across lifestyle, luxury, tech, and fashion curated for genuine resonance.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Influencer Network</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Bespoke Curation</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2: ROI Driven Campaigns -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between" style="transition-delay: 150ms;">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">trending_up</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">02</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            ROI Driven Campaigns
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Data-led strategy and high-converting creative direction engineered to maximize engagement, conversions, and measurable return on ad spend.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Campaign Strategy</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Targeted Focus</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3: Verified Creators -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between" style="transition-delay: 300ms;">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">03</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            Verified Creators
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Multi-tier forensic auditing analyzing follower authenticity, true engagement ratios, demographic reach, and total brand safety.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Quality Assurance</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">100% Authentic</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 4: Fast Turnaround -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between" style="transition-delay: 150ms;">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">04</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            Fast Turnaround
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Streamlined luxury agency infrastructure allowing rapid creator matching, contracting, and campaign launch without administrative drag.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Speed &amp; Agility</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Rapid Execution</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 5: Dedicated Campaign Managers -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between" style="transition-delay: 300ms;">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">05</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            Dedicated Campaign Managers
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            White-glove concierge management with a single expert strategist overseeing briefing, asset approvals, and timeline milestones.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Bespoke Guidance</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">1-on-1 Support</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 6: Real-Time Reporting -->
+                <div class="why-choose-card p-8 md:p-10 rounded-2xl reveal group flex flex-col justify-between" style="transition-delay: 450ms;">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <span class="material-symbols-outlined text-primary text-3xl">insights</span>
+                            </div>
+                            <span class="text-sm font-bold tracking-wider font-mono text-[#DDA291]/60 group-hover:text-[#DDA291] transition-colors">06</span>
+                        </div>
+                        <h3 class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">
+                            Real-Time Reporting
+                        </h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            24/7 client analytics portal offering real-time impression velocity, engagement rate tracking, content performance, and live ROI updates.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-wider text-on-surface-variant">Live Insights</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider font-mono bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Full Transparency</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Animated Campaign Timeline Section -->
+    <section class="py-20 bg-[#0A0A09] relative overflow-hidden">
+        <!-- Ambient Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-[#DDA291]/5 blur-[160px] pointer-events-none rounded-full"></div>
+
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10">
+            <!-- Header & Scroll Controls -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                <div>
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1A1A] border border-[#DDA291]/30 text-xs font-bold tracking-widest uppercase text-primary mb-4 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                        End-To-End Campaign Workflow
+                    </span>
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
+                        Horizontal <span class="rose-gold-gradient">Campaign Timeline</span>
+                    </h2>
+                    <p class="text-on-surface-variant font-body-lg text-body-lg max-w-xl mt-3">
+                        From initial brand inquiry to final ROI report — a seamless 8-stage execution blueprint.
+                    </p>
+                </div>
+                <!-- Navigation Scroll Controls -->
+                <div class="flex items-center gap-3">
+                    <button id="timeline-prev-btn" class="w-12 h-12 rounded-full border border-[#DDA291]/30 bg-[#1A1817] text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] flex items-center justify-center transition-all duration-300 shadow-md disabled:opacity-30 disabled:pointer-events-none" aria-label="Scroll left">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button id="timeline-next-btn" class="w-12 h-12 rounded-full border border-[#DDA291]/30 bg-[#1A1817] text-[#DDA291] hover:bg-[#DDA291] hover:text-[#0F0F0E] flex items-center justify-center transition-all duration-300 shadow-md disabled:opacity-30 disabled:pointer-events-none" aria-label="Scroll right">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Timeline Container -->
+            <div class="relative pt-8 pb-12">
+                
+                <!-- Continuous Animated Connecting Line -->
+                <div class="hidden lg:block absolute top-[110px] left-0 right-0 h-1 bg-[#26211F] rounded-full overflow-hidden z-0">
+                    <div class="w-full h-full timeline-line-pulse"></div>
+                </div>
+
+                <!-- Scrollable Track -->
+                <div id="timeline-scroll-container" class="flex gap-6 overflow-x-auto timeline-scrollbar scroll-smooth pb-8 pt-2 relative z-10 cursor-grab active:cursor-grabbing select-none">
+                    
+                    <!-- Step 1: Brand Enquiry -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">mail</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 01</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Initiation</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Brand Enquiry</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Initial contact and alignment on brand vision, target audience demographics, campaign KPIs, and launch timelines.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Strategy Meeting -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 100ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">groups</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 02</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Discovery</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Strategy Meeting</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Deep-dive strategic workshop positioning creative hooks, messaging pillars, and key deliverable channels.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 2-3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Creator Shortlisting -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 200ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">filter_alt</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 03</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Curation</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Creator Shortlisting</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Algorithmic talent matching and forensic audience audit to present a curated roster of verified luxury influencers.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 4-6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Campaign Planning -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 300ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">account_tree</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 04</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Blueprint</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Campaign Planning</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Contractual agreements, creative briefs, brand safety guardrails, and master posting schedules finalized.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 7-9</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Content Production -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 400ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">movie_filter</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 05</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Creation</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Content Production</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Creator shoot execution, multi-format editing, pre-publication review, and brand manager compliance approval.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 10-16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Publishing -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 500ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">rocket_launch</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 06</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Launch</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Publishing</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Synchronized multi-channel release across Instagram, TikTok, YouTube, and digital PR outlets for peak viral velocity.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 17-21</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Performance Tracking -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 600ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">query_stats</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 07</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Analytics</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">Performance Tracking</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Real-time tracking of impressions, engagement rates, click-through rates, and audience sentiment analysis.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 22-28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: ROI Report -->
+                    <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start flex-shrink-0 flex flex-col items-center reveal" style="transition-delay: 700ms;">
+                        <!-- Node Circle -->
+                        <div class="w-16 h-16 rounded-full bg-[#1A1817] border-2 border-[#DDA291] flex items-center justify-center mb-6 relative shadow-[0_0_20px_rgba(221,162,145,0.25)] group transition-all duration-300 hover:scale-110">
+                            <span class="material-symbols-outlined text-[#DDA291] text-2xl">request_quote</span>
+                            <span class="timeline-node absolute -bottom-1 w-3 h-3 rounded-full bg-[#DDA291] transition-all"></span>
+                        </div>
+                        <!-- Step Card -->
+                        <div class="timeline-card w-full p-6 rounded-2xl border border-white/10 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-bold font-mono text-[#DDA291] tracking-widest uppercase">Stage 08</span>
+                                    <span class="px-2 py-0.5 rounded bg-[#DDA291]/10 text-[10px] text-[#DDA291] font-semibold">Synthesis</span>
+                                </div>
+                                <h3 class="font-headline-md text-xl font-bold text-white mb-2">ROI Report</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Comprehensive executive briefing detailing total reach, sales lift, content rights archive, and future campaign recommendations.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>Timeline</span>
+                                <span class="font-semibold text-white">Day 30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Timeline Scroll Progress Status Bar -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-on-surface-variant border-t border-white/10 pt-6">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                        <span id="timeline-stage-indicator" class="text-white font-semibold tracking-wider uppercase">Stage 01 of 08 Active — Initiation</span>
+                    </div>
+                    <div class="flex items-center gap-4 w-full sm:w-auto">
+                        <span class="text-[11px] uppercase tracking-widest text-on-surface-variant/80">Workflow Flow</span>
+                        <div class="flex-1 sm:w-64 h-2 bg-white/10 rounded-full overflow-hidden border border-white/10 p-0.5">
+                            <div id="timeline-progress-bar" class="h-full bg-gradient-to-r from-[#A56D60] via-[#C68878] to-[#DDA291] w-[12.5%] transition-all duration-200 rounded-full shadow-[0_0_12px_rgba(221,162,145,0.5)]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & CTA -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10 animate-on-scroll">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="reveal">
+                    <span class="material-symbols-outlined text-primary text-6xl mb-8">format_quote</span>
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8 italic">"Arika Collabs delivered a 400% ROI on our last launch. Their eye for talent is unmatched in the luxury space."</h2>
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
+                            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB897SP2ObJgI7QBavXyE0dBztZZ6Jrwt4EpyTQgo-ePsnrriGwEEA0AJXbi0eWzxBqFjzlTgMNV7qbqIjiTwBdq861J6l_JKTal71NCWggVNX6sNsdvBBzWG65WyglZVogAQYMRWWIh2NJojc7KAuT9NOrdrgaXdahmwZi8kfMlP7ZsSQWoY3rzwvsidBjiWe8Fmonr5gosBxJP7BwCOeltgz1z678WDlLHGhjTLhGrsemIJ0z5NMIQeHGCbfHwb_f1rq_PMUP3qA" alt="Sanjana Jenekar"/>
+                        </div>
+                        <div>
+                            <div class="font-label-lg text-label-lg text-primary">Sanjana Jenekar</div>
+                            <div class="text-on-surface-variant text-sm">Marketing Director, Arika Collabs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel p-12 rounded-3xl reveal border-primary/20">
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-white">Ready to scale?</h3>
+                    <p class="text-on-surface-variant mb-10">Join our portfolio of elite brands and creators. Let's build something extraordinary together.</p>
+                    <form class="space-y-6">
+                        <div class="border-b border-outline-variant focus-within:border-primary transition-all">
+                            <input class="bg-transparent border-none w-full py-4 text-on-surface focus:ring-0 placeholder:text-outline" placeholder="Your Name" type="text" required/>
+                        </div>
+                        <div class="border-b border-outline-variant focus-within:border-primary transition-all">
+                            <input class="bg-transparent border-none w-full py-4 text-on-surface focus:ring-0 placeholder:text-outline" placeholder="Your Email" type="email" required/>
+                        </div>
+                        <button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-5 rounded-full btn-shine shadow-lg shadow-primary/20" type="submit">
+                            INQUIRE NOW
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 pt-16 pb-8">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-10">
+            <div class="md:col-span-2">
+                <div class="font-display-lg text-primary font-bold text-[32px] mb-6">ARIKA COLLABS</div>
+                <p class="text-on-surface-variant max-w-sm mb-8">
+                    The premier agency for luxury influencer marketing. Engineering growth for world-class creators and brands.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="https://www.instagram.com/arika_collabs/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="https://www.linkedin.com/in/arika-collabs" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all duration-300" href="mailto:support@arikacollabs.com" aria-label="Email">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h6 class="font-label-lg text-label-lg text-on-surface mb-6 uppercase tracking-widest text-white">Navigation</h6>
+                <ul class="space-y-4">
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="services.html">Services</a></li>
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="about.html">About Us</a></li>
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-label-lg text-label-lg text-on-surface mb-6 uppercase tracking-widest text-white">Legal</h6>
+                <ul class="space-y-4">
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a></li>
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="#">Terms of Service</a></li>
+                    <li><a class="text-on-surface-variant hover:text-tertiary transition-colors font-body-md text-body-md" href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop mt-10 pt-6 border-t border-outline-variant/10 text-center">
+            <p class="text-on-surface-variant text-[12px] opacity-60">© 2024 ARIKA COLLABS. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Page Script -->
+    <script type="module" src="./js/home.ts"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Arika Collabs",
+  "description": "Premium influencer marketing agency for high-end fashion and luxury brands.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
