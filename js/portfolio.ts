@@ -5,10 +5,16 @@ import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
+import { initSplashScreen, bindReplaySplashButtons } from './splashScreen';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
+    initSplashScreen({ duration: 2500 });
+
+    // Replay Splash Screen button handlers (Desktop & Mobile)
+    bindReplaySplashButtons();
+
     initCustomCursor();
     initScrollReveal();
     initBackToTop();

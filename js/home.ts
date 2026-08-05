@@ -3,7 +3,7 @@ import { initScrollReveal } from './reveal';
 import { initBackToTop } from './backToTop';
 import { initHero3DLogo } from './hero3DLogo';
 import { initNavPreview } from './navPreview';
-import { initSplashScreen, resetSplashSession } from './splashScreen';
+import { initSplashScreen, bindReplaySplashButtons } from './splashScreen';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
@@ -22,15 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Replay Splash Screen button handler
-    const replaySplashBtn = document.getElementById('replay-splash-btn');
-    if (replaySplashBtn) {
-        replaySplashBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            resetSplashSession();
-            initSplashScreen({ forceShow: true, duration: 2500 });
-        });
-    }
+    // Replay Splash Screen button handlers (Desktop & Mobile)
+    bindReplaySplashButtons();
 
     initCustomCursor();
     initScrollReveal();
