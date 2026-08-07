@@ -9,7 +9,7 @@ import { initSplashScreen, bindReplaySplashButtons } from './splashScreen';
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
-    initSplashScreen({ duration: 2500 });
+    initSplashScreen({ duration: 3000 });
 
     // Replay Splash Screen button handlers (Desktop & Mobile)
     bindReplaySplashButtons();
@@ -47,6 +47,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateScrollEffects);
     updateScrollEffects(); // Initial call
+
+    // Initialize global Gmail / Mail icon click handler
+    const initMailtoHandler = () => {
+        const mailElements = document.querySelectorAll<HTMLElement>('a[href^="mailto:"], [aria-label="Email"]');
+        mailElements.forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = 'support@arikacollabs.com';
+
+                // 1. Copy to clipboard
+                navigator.clipboard.writeText(email).catch(() => {});
+
+                // 2. Show floating toast notification
+                let toast = document.getElementById('global-mail-toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'global-mail-toast';
+                    toast.className = 'fixed bottom-8 right-8 z-[200] px-6 py-4 rounded-full bg-[#181615] border border-[#DDA291] text-[#DDA291] font-mono text-xs sm:text-sm shadow-[0_10px_35px_rgba(221,162,145,0.4)] flex items-center gap-3 backdrop-blur-xl transition-all duration-300 opacity-0 translate-y-4';
+                    toast.innerHTML = `
+                        <span class="material-symbols-outlined text-emerald-400 text-lg">mark_email_read</span>
+                        <span class="text-white font-semibold">✓ Gmail copied: ${email}</span>
+                    `;
+                    document.body.appendChild(toast);
+                }
+
+                // Trigger animation
+                setTimeout(() => {
+                    if (toast) {
+                        toast.classList.remove('opacity-0', 'translate-y-4');
+                        toast.classList.add('opacity-100', 'translate-y-0');
+                    }
+                }, 10);
+
+                // Hide after 4s
+                setTimeout(() => {
+                    if (toast) {
+                        toast.classList.remove('opacity-100', 'translate-y-0');
+                        toast.classList.add('opacity-0', 'translate-y-4');
+                    }
+                }, 4000);
+
+                // 3. Smooth scroll to inquiry form if present
+                const inquiryForm = document.getElementById('inquiry-form') || document.getElementById('contact-coordinates') || document.getElementById('contact-section');
+                if (inquiryForm) {
+                    inquiryForm.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // 4. Open Gmail Web compose window directly in new browser tab
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent('ARIKA COLLABS - Campaign Inquiry')}`;
+                try {
+                    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+                } catch {
+                    window.open(`mailto:${email}`, '_self');
+                }
+            });
+        });
+    };
+
+    initMailtoHandler();
 
     // Smooth scroll for internal anchor links (e.g. #inquiry-form, #contact-coordinates)
     document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {

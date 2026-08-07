@@ -311,44 +311,114 @@
     </section>
 
     <!-- FAQ Accordion Section -->
-    <section class="py-20 bg-[#1A1A1A] border-t border-white/5">
+    <section id="faq-section" class="py-20 bg-[#1A1A1A] border-t border-white/5 relative overflow-hidden">
         <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
             <div class="text-center mb-12 animate-on-scroll">
-                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Frequently Asked Inquiries</h2>
-                <p class="font-body-lg text-body-lg text-on-surface-variant">Instant answers regarding Arika Collabs workflows and onboarding.</p>
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-[0.25em] mb-4 shadow-[0_0_15px_rgba(221,162,145,0.15)]">
+                    <span class="text-[#DDA291]">✦</span>
+                    <span class="font-semibold">FAQ &amp; Campaign Onboarding</span>
+                    <span class="text-[#DDA291]">✦</span>
+                </div>
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Frequently Asked Questions</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Instant answers regarding Arika Collabs workflows, services, and onboarding.</p>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-6 animate-on-scroll">
-                <!-- FAQ 1 -->
-                <details class="faq-accordion group bg-[#0F0F0E] border border-white/5 rounded-xl p-6 transition-all duration-300">
-                    <summary class="flex justify-between items-center font-semibold text-white list-none cursor-pointer focus:outline-none">
-                        <span>What niche of creators do you represent?</span>
+            <div class="max-w-3xl mx-auto space-y-4 animate-on-scroll">
+                <!-- FAQ 1: How can we get started? -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg" open>
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            How can we get started?
+                        </span>
                         <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
                     </summary>
-                    <div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-white/5 pt-4">
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        Book a free consultation or contact us through the website.
+                    </div>
+                </details>
+
+                <!-- FAQ 2: What services do you offer? -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            What services do you offer?
+                        </span>
+                        <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        End-to-end influencer marketing, UGC campaigns, creator sourcing, and campaign management.
+                    </div>
+                </details>
+
+                <!-- FAQ 3: Do you manage the entire campaign? -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            Do you manage the entire campaign?
+                        </span>
+                        <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        Yes, from strategy and creator outreach to execution and reporting.
+                    </div>
+                </details>
+
+                <!-- FAQ 4: How long does a campaign take? -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            How long does a campaign take?
+                        </span>
+                        <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        Most campaigns are launched within 5–10 business days.
+                    </div>
+                </details>
+
+                <!-- FAQ 5: Niche -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            What niche of creators do you represent?
+                        </span>
+                        <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
                         We represent premium talent across high-fashion, lifestyle, luxury travel, automotive, and clean beauty. Every creator in our roster is selected for their exceptional visual aesthetics, audited engagement metrics, and community authority.
                     </div>
                 </details>
 
-                <!-- FAQ 2 -->
-                <details class="faq-accordion group bg-[#0F0F0E] border border-white/5 rounded-xl p-6 transition-all duration-300">
-                    <summary class="flex justify-between items-center font-semibold text-white list-none cursor-pointer focus:outline-none">
-                        <span>What is your minimum campaign budget?</span>
+                <!-- FAQ 6: Budget -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            What is your minimum campaign budget?
+                        </span>
                         <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
                     </summary>
-                    <div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-white/5 pt-4">
-                        As a boutique agency focusing on curated quality, our campaigns typically start at $5,000 to cover end-to-end strategic design, contract compliance, and asset quality control. This ensures all creative deliverables retain supreme luxury positioning.
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        As a boutique agency focusing on curated quality, our campaigns typically start at $5,000 to cover end-to-end strategic design, contract compliance, and asset quality control.
                     </div>
                 </details>
 
-                <!-- FAQ 3 -->
-                <details class="faq-accordion group bg-[#0F0F0E] border border-white/5 rounded-xl p-6 transition-all duration-300">
-                    <summary class="flex justify-between items-center font-semibold text-white list-none cursor-pointer focus:outline-none">
-                        <span>How do you track campaign ROI?</span>
+                <!-- FAQ 7: Tracking ROI -->
+                <details class="faq-accordion group bg-[#0F0F0E] border border-white/10 hover:border-primary/40 rounded-xl p-6 transition-all duration-300 shadow-lg">
+                    <summary class="flex justify-between items-center font-semibold text-white text-base md:text-lg list-none cursor-pointer focus:outline-none select-none">
+                        <span class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#DDA291]"></span>
+                            How do you track campaign ROI?
+                        </span>
                         <span class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
                     </summary>
-                    <div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-white/5 pt-4">
-                        We supply all brand clients with a custom-built, real-time analytics portal tracking conversions, click-through rates, and audited engagement metrics. This removes guesswork and gives transparent, tangible proof of value.
+                    <div class="mt-4 text-on-surface-variant text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 pl-5">
+                        We supply all brand clients with a custom-built, real-time analytics portal tracking conversions, click-through rates, and audited engagement metrics.
                     </div>
                 </details>
             </div>

@@ -58,7 +58,7 @@ function playLuxuryChime(pitchMultiplier = 1.0) {
 }
 
 export function initSplashScreen(options: SplashScreenOptions = {}): void {
-    const { forceShow = false, duration = 3200, onComplete } = options;
+    const { forceShow = false, duration = 3000, onComplete } = options;
 
     // Session storage check and reduced motion check
     const hasSeenSplash = sessionStorage.getItem('arika_splash_shown');
@@ -142,7 +142,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 </div>
 
                 <!-- ARIKA COLLABS Letter-by-Letter Staggered Text -->
-                <div id="splash-title-container" class="flex items-center justify-center gap-[0.15em] mb-4 overflow-hidden min-h-[48px]">
+                <div id="splash-title-container" class="flex items-center justify-center gap-[0.1em] mb-4 overflow-hidden min-h-[48px]">
                     <!-- Letters inserted dynamically -->
                 </div>
 
@@ -150,12 +150,12 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 <div class="w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center">
                     
                     <!-- Large Prominent Sequential Fading Loading Phrase with Blur-In Transition -->
-                    <div id="splash-phrase-wrapper" class="relative min-h-[64px] sm:min-h-[76px] md:min-h-[84px] flex items-center justify-center w-full px-2 mb-1">
-                        <div id="splash-phrase-badge" class="flex items-center justify-center gap-2.5 sm:gap-4 w-full transition-all duration-700 ease-out opacity-0 translate-y-3 blur-md">
+                    <div id="splash-phrase-wrapper" class="relative min-h-[56px] sm:min-h-[68px] flex items-center justify-center w-full px-2 mb-2">
+                        <div id="splash-phrase-badge" class="flex items-center justify-center gap-2.5 sm:gap-4 w-full transition-all duration-500 ease-out opacity-0 translate-y-3 blur-md">
                             <span class="hidden sm:inline-block w-8 sm:w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#DDA291]/60 to-[#DDA291]"></span>
                             <span class="text-[#DDA291] text-xs sm:text-sm animate-pulse">✦</span>
-                            <span id="splash-phrase-text" class="font-serif-luxury text-2xl sm:text-4xl md:text-5xl font-normal italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#F8DED1] to-[#DDA291] drop-shadow-[0_4px_30px_rgba(221,162,145,0.6)] text-center leading-tight">
-                                Curating luxury
+                            <span id="splash-phrase-text" class="font-serif-luxury text-xl sm:text-3xl md:text-4xl font-normal italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#F8DED1] to-[#DDA291] drop-shadow-[0_4px_30px_rgba(221,162,145,0.6)] text-center leading-tight">
+                                Curating Luxury Influence
                             </span>
                             <span class="text-[#DDA291] text-xs sm:text-sm animate-pulse">✦</span>
                             <span class="hidden sm:inline-block w-8 sm:w-16 h-[1.5px] bg-gradient-to-l from-transparent via-[#DDA291]/60 to-[#DDA291]"></span>
@@ -163,7 +163,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                     </div>
 
                     <!-- Dynamic Sub-Status Step Message -->
-                    <p id="splash-status-text" class="font-syne text-xs sm:text-sm md:text-base uppercase tracking-[0.25em] text-[#DDA291]/95 font-bold transition-all duration-300 text-center mb-5 min-h-[24px] drop-shadow-[0_2px_10px_rgba(221,162,145,0.3)]">
+                    <p id="splash-status-text" class="font-syne text-xs sm:text-sm uppercase tracking-[0.22em] text-[#DDA291]/95 font-bold transition-all duration-300 text-center mb-4 min-h-[22px] drop-shadow-[0_2px_10px_rgba(221,162,145,0.3)]">
                         Initializing High-Definition Media...
                     </p>
 
@@ -171,26 +171,26 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                     <div id="splash-status-container" class="flex flex-col sm:flex-row items-center justify-center gap-3.5 opacity-0 transition-opacity duration-500">
                         
                         <!-- Percentage Card with Live SVG Circular Progress Ring -->
-                        <div class="glass-panel px-5 py-2.5 rounded-full border border-[#DDA291]/40 flex items-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.7)] bg-gradient-to-r from-[#1A1817]/95 via-[#2A2321]/95 to-[#1A1817]/95">
+                        <div class="glass-panel px-5 py-2 rounded-full border border-[#DDA291]/40 flex items-center gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.7)] bg-gradient-to-r from-[#1A1817]/95 via-[#2A2321]/95 to-[#1A1817]/95">
                             <!-- Mini SVG Radial Arc -->
-                            <div class="relative w-8 h-8 flex items-center justify-center">
+                            <div class="relative w-7 h-7 flex items-center justify-center">
                                 <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                                     <path class="text-white/10" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                     <path id="splash-svg-ring" class="text-[#DDA291] transition-all duration-150 ease-linear" stroke-dasharray="100, 100" stroke-dashoffset="100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
-                                <span class="absolute text-[9px] font-mono font-bold text-[#DDA291]">✦</span>
+                                <span class="absolute text-[8px] font-mono font-bold text-[#DDA291]">✦</span>
                             </div>
                             
                             <div class="flex items-center gap-2 border-l border-[#DDA291]/30 pl-3">
-                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#DDA291]/80 font-semibold">LOAD</span>
-                                <span id="splash-percentage" class="font-mono text-xl sm:text-2xl font-extrabold text-white tracking-widest text-glow-rose">
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#DDA291]/80 font-semibold">LOAD</span>
+                                <span id="splash-percentage" class="font-mono text-lg sm:text-xl font-extrabold text-white tracking-widest text-glow-rose">
                                     0%
                                 </span>
                             </div>
                         </div>
 
                         <!-- Agency Highlight Metric Pill -->
-                        <div id="splash-highlight-pill" class="glass-panel px-5 py-2.5 rounded-full border border-white/15 text-xs font-mono text-white/90 uppercase tracking-widest flex items-center gap-2.5 transition-all duration-500 bg-white/5 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+                        <div id="splash-highlight-pill" class="glass-panel px-4 py-2 rounded-full border border-white/15 text-xs font-mono text-white/90 uppercase tracking-widest flex items-center gap-2.5 transition-all duration-500 bg-white/5 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
                             <span id="splash-highlight-icon" class="text-[#DDA291] text-sm">💎</span>
                             <span id="splash-highlight-text" class="font-medium">500M+ Organic Creator Reach</span>
                         </div>
@@ -249,11 +249,11 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
         titleContainer.innerHTML = '';
         titleText.split('').forEach((char, idx) => {
             const span = document.createElement('span');
-            span.className = `font-display-lg font-bold text-2xl sm:text-4xl md:text-5xl tracking-wider transition-all duration-500 ease-out ${
-                char === ' ' ? 'w-3 sm:w-4 inline-block' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-[#F8DED1] to-[#DDA291] drop-shadow-[0_4px_25px_rgba(221,162,145,0.5)]'
+            span.className = `font-display-lg font-bold text-2xl sm:text-4xl md:text-5xl tracking-wider transition-all duration-500 ease-out inline-block ${
+                char === ' ' ? 'w-3 sm:w-4' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-[#F8DED1] to-[#DDA291] drop-shadow-[0_4px_25px_rgba(221,162,145,0.5)]'
             }`;
             span.style.opacity = '0';
-            span.style.transform = 'translateY(35px) scale(0.85)';
+            span.style.transform = 'translateY(30px) scale(0.85)';
             span.style.filter = 'blur(10px)';
             span.innerText = char;
             titleContainer.appendChild(span);
@@ -263,7 +263,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 span.style.opacity = '1';
                 span.style.transform = 'translateY(0) scale(1)';
                 span.style.filter = 'blur(0px)';
-            }, 250 + idx * 45);
+            }, 200 + idx * 40);
         });
     }
 
@@ -380,13 +380,12 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
     let currentPhraseIdx = -1;
     let isSkipped = false;
 
-    // Fading Text Phrases Sequence
+    // Fading Text Phrases Sequence (Curated for smooth, readable 4-part rhythm)
     const phrases = [
-        "Curating luxury",
-        "Analyzing trends",
-        "Engineering growth",
-        "Elevating influence",
-        "Unlocking potential"
+        "Curating Luxury Influence",
+        "Engineering Brand Growth",
+        "Elevating Digital Aesthetics",
+        "Unlocking Global Dominance"
     ];
 
     // Slogans & Milestones Arrays
@@ -434,14 +433,14 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
             phraseBadgeEl.classList.remove('opacity-0', 'translate-y-3', 'blur-md');
             phraseBadgeEl.classList.add('opacity-100', 'translate-y-0', 'blur-none');
             phraseBadgeEl.style.filter = 'blur(0px)';
-        }, 550);
+        }, 450);
     }
 
     // Fast-forward Skip feature
     const triggerSkip = () => {
         if (isSkipped) return;
         isSkipped = true;
-        effectiveDuration = 300; // Accelerated finish
+        effectiveDuration = 250; // Accelerated finish
     };
 
     if (skipBtn) {
@@ -481,10 +480,10 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
             currentPhraseIdx = phraseStep;
             const newPhrase = phrases[phraseStep];
 
-            // Blur-out & fade-out current phrase
+            // Blur-out & fade-out current phrase smoothly
             phraseBadgeEl.style.opacity = '0';
-            phraseBadgeEl.style.filter = 'blur(12px)';
-            phraseBadgeEl.style.transform = 'translateY(-8px) scale(0.96)';
+            phraseBadgeEl.style.filter = 'blur(8px)';
+            phraseBadgeEl.style.transform = 'translateY(-6px) scale(0.97)';
 
             setTimeout(() => {
                 phraseTextEl.textContent = newPhrase;
@@ -492,7 +491,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 phraseBadgeEl.style.opacity = '1';
                 phraseBadgeEl.style.filter = 'blur(0px)';
                 phraseBadgeEl.style.transform = 'translateY(0) scale(1)';
-            }, 250);
+            }, 180);
         }
 
         // Determine current stage
@@ -524,7 +523,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 setTimeout(() => {
                     statusTextEl.textContent = stageData.status;
                     statusTextEl.style.opacity = '1';
-                }, 120);
+                }, 100);
             }
 
             // Smooth transition for Highlight Carousel
@@ -532,13 +531,13 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                 const highlightPill = document.getElementById('splash-highlight-pill');
                 if (highlightPill) {
                     highlightPill.style.opacity = '0';
-                    highlightPill.style.transform = 'translateY(5px)';
+                    highlightPill.style.transform = 'translateY(4px)';
                     setTimeout(() => {
                         highlightIconEl.textContent = stageData.icon;
                         highlightTextEl.textContent = stageData.highlight;
                         highlightPill.style.opacity = '1';
                         highlightPill.style.transform = 'translateY(0)';
-                    }, 180);
+                    }, 140);
                 }
             }
         }
@@ -571,7 +570,7 @@ export function initSplashScreen(options: SplashScreenOptions = {}): void {
                     }
                     if (onComplete) onComplete();
                 }, 700);
-            }, 350);
+            }, 300);
         }
     };
 
@@ -590,7 +589,8 @@ export function bindReplaySplashButtons(): void {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             resetSplashSession();
-            initSplashScreen({ forceShow: true, duration: 3200 });
+            initSplashScreen({ forceShow: true, duration: 3000 });
         });
     });
 }
+

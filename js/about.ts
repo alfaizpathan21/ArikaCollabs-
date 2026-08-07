@@ -9,7 +9,7 @@ import { initSplashScreen, bindReplaySplashButtons } from './splashScreen';
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
-    initSplashScreen({ duration: 2500 });
+    initSplashScreen({ duration: 3000 });
 
     // Replay Splash Screen button handlers (Desktop & Mobile)
     bindReplaySplashButtons();

@@ -27,7 +27,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, forceSho
 
         // Animate loading bar progress
         const startTime = Date.now();
-        const duration = 2500; // 2.5 seconds
+        const duration = 3000; // 3.0 seconds
 
         const progressInterval = setInterval(() => {
             const elapsed = Date.now() - startTime;
