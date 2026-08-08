@@ -582,15 +582,3 @@ export function resetSplashSession(): void {
     sessionStorage.removeItem('arika_splash_shown');
 }
 
-// Automatically bind replay listeners across any DOM elements
-export function bindReplaySplashButtons(): void {
-    const replayBtns = document.querySelectorAll('#replay-splash-btn, #mobile-replay-splash-btn, [data-replay-splash]');
-    replayBtns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            resetSplashSession();
-            initSplashScreen({ forceShow: true, duration: 3000 });
-        });
-    });
-}
-

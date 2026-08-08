@@ -35,10 +35,6 @@
                         <span id="theme-icon-moon" class="material-symbols-outlined text-[#DDA291] text-lg absolute transition-all duration-300 block scale-100">bedtime</span>
                     </div>
                 </button>
-                <button id="replay-splash-btn" class="hidden sm:inline-flex items-center gap-1.5 glass-panel text-xs text-[#DDA291] font-mono px-3.5 py-1.5 rounded-full border border-[#DDA291]/30 hover:bg-[#DDA291] hover:text-black transition-all" title="Replay Opening Animation">
-                    <span class="material-symbols-outlined text-sm animate-spin-slow">play_circle</span>
-                    <span>Replay Intro</span>
-                </button>
                 <a class="hidden sm:inline-block bg-primary text-on-primary font-label-lg text-label-lg px-6 py-2 rounded-full hover:bg-primary/95 hover:shadow-[0_0_20px_rgba(221,162,145,0.4)] transition-all navbar-btn-interactive" href="contact.html">
                     CONTACT
                 </a>
@@ -70,15 +66,6 @@
                 </span>
                 <span id="mobile-theme-toggle-status" class="text-xs font-bold px-3 py-1 rounded-full bg-[#DDA291]/15 border border-[#DDA291]/30">
                     Dark Luxury
-                </span>
-            </button>
-            <button id="mobile-replay-splash-btn" class="flex items-center justify-between p-3.5 rounded-xl border border-[#DDA291]/30 glass-panel text-[#DDA291] font-mono text-sm mt-1 cursor-pointer hover:bg-[#DDA291]/10 transition-all">
-                <span class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-base animate-spin-slow">play_circle</span>
-                    <span>Replay Intro</span>
-                </span>
-                <span class="text-xs font-bold px-3 py-0.5 rounded-full bg-[#DDA291]/15 border border-[#DDA291]/30">
-                    Intro
                 </span>
             </button>
             <a class="mt-4 bg-primary text-on-primary text-center py-3 rounded-full font-bold btn-shine navbar-btn-interactive" href="contact.html">CONTACT NOW</a>
@@ -223,6 +210,52 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Developer-Controlled Instagram Multi-Video Showcase Section -->
+    <section id="instagram-live" class="py-16 sm:py-20 relative overflow-hidden bg-gradient-to-b from-black via-[#0B0908] to-black border-t border-white/10">
+        <!-- Ambient Background Lighting -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#DDA291]/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+        <div class="max-w-[1300px] mx-auto px-4 sm:px-8 relative z-10">
+            <!-- Header Section -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
+                <div class="text-center sm:text-left max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A1110] border border-[#DDA291]/40 text-[#DDA291] font-mono text-[11px] uppercase tracking-widest mb-3 shadow-[0_0_15px_rgba(221,162,145,0.2)]">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                        <span class="font-bold text-white tracking-wider">INSTAGRAM</span>
+                    </div>
+
+                    <h2 class="font-display-lg text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
+                        Latest From <span class="rose-gold-text">Arika</span>
+                    </h2>
+
+                    <p class="text-gray-400 text-xs sm:text-sm font-sans leading-relaxed">
+                        Explore our latest moments, collaborations and updates.
+                    </p>
+                </div>
+
+                <!-- Carousel Nav Controls -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <button id="ig-carousel-prev" aria-label="Previous video" class="w-10 h-10 rounded-full border border-[#DDA291]/40 bg-[#121010]/80 text-[#DDA291] flex items-center justify-center hover:bg-[#DDA291] hover:text-black transition-all cursor-pointer shadow-md">
+                        <span class="text-lg font-bold">←</span>
+                    </button>
+                    <button id="ig-carousel-next" aria-label="Next video" class="w-10 h-10 rounded-full border border-[#DDA291]/40 bg-[#121010]/80 text-[#DDA291] flex items-center justify-center hover:bg-[#DDA291] hover:text-black transition-all cursor-pointer shadow-md">
+                        <span class="text-lg font-bold">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cards Grid Container -->
+            <div id="ig-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
+                <!-- Cards dynamically populated by JS -->
+            </div>
+
+            <!-- Pagination Dots -->
+            <div id="ig-pagination-dots" class="flex items-center justify-center gap-2 mt-8">
+                <!-- Dots populated by JS -->
+            </div>
         </div>
     </section>
 

@@ -586,6 +586,120 @@ html.light .mobile-social-icon:hover {
   border-color: #A56D60 !important;
 }
 
+/* ==========================================
+   Light Mode Overrides for "Latest From Arika" / Instagram Showcase
+   ========================================== */
+html.light #instagram-live,
+html.light #instagram-live-section {
+  background: linear-gradient(180deg, #FAF8F6 0%, #F4F0EB 50%, #FAF8F6 100%) !important;
+  border-top-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light #instagram-live .bg-\[\#1A1110\],
+html.light #instagram-live-section .bg-\[\#1A1110\] {
+  background-color: #F4F0EB !important;
+  border-color: rgba(198, 136, 120, 0.4) !important;
+  color: #C68878 !important;
+}
+
+html.light #instagram-live .bg-\[\#1A1110\] span,
+html.light #instagram-live-section .bg-\[\#1A1110\] span {
+  color: #C68878 !important;
+}
+
+html.light #ig-carousel-prev,
+html.light #ig-carousel-next,
+html.light #instagram-live-section button[aria-label="Previous video"],
+html.light #instagram-live-section button[aria-label="Next video"] {
+  background-color: #FFFFFF !important;
+  border-color: rgba(198, 136, 120, 0.4) !important;
+  color: #C68878 !important;
+  box-shadow: 0 4px 15px rgba(198, 136, 120, 0.12) !important;
+}
+
+html.light #ig-carousel-prev:hover,
+html.light #ig-carousel-next:hover,
+html.light #instagram-live-section button[aria-label="Previous video"]:hover,
+html.light #instagram-live-section button[aria-label="Next video"]:hover {
+  background-color: #C68878 !important;
+  color: #FFFFFF !important;
+  border-color: #C68878 !important;
+}
+
+html.light .instagram-card,
+html.light #ig-cards-container > div {
+  background-color: #FFFFFF !important;
+  border-color: rgba(198, 136, 120, 0.3) !important;
+  box-shadow: 0 10px 30px -10px rgba(198, 136, 120, 0.15) !important;
+}
+
+html.light .instagram-card:hover,
+html.light #ig-cards-container > div:hover {
+  border-color: #C68878 !important;
+  box-shadow: 0 16px 40px -10px rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light .instagram-card .border-b,
+html.light #ig-cards-container .border-b {
+  border-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light .instagram-card .border-t,
+html.light #ig-cards-container .border-t {
+  border-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light .instagram-card span.font-mono,
+html.light #ig-cards-container span.font-mono {
+  background-color: #F4F0EB !important;
+  color: #C68878 !important;
+  border-color: rgba(198, 136, 120, 0.35) !important;
+}
+
+html.light .instagram-card .bg-black\/90,
+html.light .instagram-card .bg-black\/80,
+html.light #ig-cards-container .bg-black\/80 {
+  background-color: #F8F5F1 !important;
+  border-color: rgba(198, 136, 120, 0.2) !important;
+}
+
+html.light .instagram-card .bg-gradient-to-b,
+html.light #ig-cards-container .bg-gradient-to-b {
+  background: linear-gradient(180deg, #F9F6F3 0%, #F2ECE4 100%) !important;
+}
+
+html.light .instagram-card .bg-\[\#121010\],
+html.light #ig-cards-container .bg-\[\#121010\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .instagram-card .bg-\[\#151211\],
+html.light #ig-cards-container .bg-\[\#151211\] {
+  background-color: #F8F5F1 !important;
+}
+
+html.light #ig-pagination-dots button,
+html.light #instagram-live-section button[aria-label*="slide"] {
+  background-color: rgba(198, 136, 120, 0.25) !important;
+}
+
+html.light #ig-pagination-dots button.w-6,
+html.light #ig-pagination-dots button.w-8,
+html.light #instagram-live-section button[aria-label*="slide"].w-8,
+html.light #instagram-live-section button[aria-label*="slide"].w-6 {
+  background-color: #C68878 !important;
+}
+
+html.light .instagram-card a.text-\[\#DDA291\],
+html.light #ig-cards-container a.text-\[\#DDA291\] {
+  color: #C68878 !important;
+}
+
+html.light .instagram-card a.text-\[\#DDA291\]:hover,
+html.light #ig-cards-container a.text-\[\#DDA291\]:hover {
+  color: #121110 !important;
+}
+
 /* Premium Service Cards Staggered Entrance Animation & Micro-Interactions */
 .service-card {
   opacity: 0;

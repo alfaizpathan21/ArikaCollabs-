@@ -4,15 +4,12 @@ import { initBackToTop } from './backToTop';
 import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
-import { initSplashScreen, bindReplaySplashButtons } from './splashScreen';
+import { initSplashScreen } from './splashScreen';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
     initSplashScreen({ duration: 3000 });
-
-    // Replay Splash Screen button handlers (Desktop & Mobile)
-    bindReplaySplashButtons();
 
     initCustomCursor();
     initScrollReveal();

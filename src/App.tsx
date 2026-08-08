@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { SplashScreen } from './components/SplashScreen';
 import { ContactForm } from './components/ContactForm';
 import { EmailModal } from './components/EmailModal';
+import { InstagramLiveSection } from './components/InstagramLiveSection';
 
 export default function App() {
-    const [splashKey, setSplashKey] = useState<number>(0);
-    const [splashComplete, setSplashComplete] = useState<boolean>(false);
     const [toastMessage, setToastMessage] = useState<string | null>(null);
     const [isEmailModalOpen, setIsEmailModalOpen] = useState<boolean>(false);
     const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -27,12 +25,6 @@ export default function App() {
 
     const handleToggleTheme = () => {
         setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-    };
-
-    const handleReplaySplash = () => {
-        sessionStorage.removeItem('arika_splash_shown');
-        setSplashKey((prev) => prev + 1);
-        setSplashComplete(false);
     };
 
     const handleEmailClick = (e: React.MouseEvent) => {
@@ -89,9 +81,6 @@ export default function App() {
                 )}
             </AnimatePresence>
 
-            {/* Opening Luxury Splash Screen Component */}
-            <SplashScreen key={splashKey} forceShow={splashKey > 0} onComplete={() => setSplashComplete(true)} />
-
             {/* Top Navigation */}
             <header className="px-8 py-6 flex items-center justify-between border-b border-white/10 bg-surface/80 backdrop-blur-md">
                 <span className="font-bold text-xl tracking-wider text-[#DDA291] drop-shadow-[0_0_10px_rgba(221,162,145,0.2)]">ARIKA COLLABS</span>
@@ -113,13 +102,6 @@ export default function App() {
                             {theme === 'dark' ? 'light_mode' : 'bedtime'}
                         </span>
                         <span>{theme === 'dark' ? 'Dark Luxury' : 'Minimalist Light'}</span>
-                    </button>
-                    <button
-                        onClick={handleReplaySplash}
-                        className="btn-glow-outline px-4 py-2 rounded-full border border-[#DDA291]/40 text-[#DDA291] text-xs font-mono hover:text-black flex items-center gap-2 cursor-pointer group"
-                    >
-                        <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover:rotate-180">play_circle</span>
-                        Replay Opening Animation
                     </button>
                 </div>
             </header>
@@ -145,16 +127,8 @@ export default function App() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                     <button
-                        onClick={handleReplaySplash}
-                        className="btn-glow-primary group px-8 py-4 rounded-full bg-[#DDA291] text-black font-bold text-sm hover:bg-white cursor-pointer flex items-center gap-2"
-                    >
-                        <span className="material-symbols-outlined text-lg transition-transform duration-300 group-hover:scale-125">auto_awesome</span>
-                        <span>Test Splash Intro Again</span>
-                    </button>
-
-                    <button
                         onClick={handleEmailClick}
-                        className="btn-glow-outline group px-8 py-4 rounded-full border border-[#DDA291]/50 text-[#DDA291] font-semibold text-sm cursor-pointer flex items-center gap-2"
+                        className="btn-glow-primary group px-8 py-4 rounded-full bg-[#DDA291] text-black font-bold text-sm hover:bg-white cursor-pointer flex items-center gap-2"
                         title="Click to copy Gmail & initiate inquiry"
                     >
                         <span>Gmail / Campaign Inquiry</span>
@@ -162,6 +136,9 @@ export default function App() {
                     </button>
                 </div>
             </motion.main>
+
+            {/* Developer-Controlled Instagram Live Section */}
+            <InstagramLiveSection />
 
             {/* Interactive Contact & Inquiry Form */}
             <ContactForm />
