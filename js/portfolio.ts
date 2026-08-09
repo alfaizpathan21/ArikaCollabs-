@@ -19,7 +19,7 @@ function initInstagramLiveSection() {
     const videos: InstagramVideoItem[] = getInstagramVideoList();
     if (!videos || videos.length === 0) return;
 
-    let currentIndex = 0;
+    let currentPage = 0;
 
     function getItemsPerPage(): number {
         if (window.innerWidth >= 1024) return 3;
@@ -31,13 +31,16 @@ function initInstagramLiveSection() {
         if (!container) return;
 
         const itemsPerPage = getItemsPerPage();
-        const maxIndex = Math.max(0, videos.length - itemsPerPage);
-        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        const totalPages = Math.ceil(videos.length / itemsPerPage);
+        
+        if (currentPage >= totalPages) currentPage = Math.max(0, totalPages - 1);
 
-        const visibleVideos = videos.slice(currentIndex, currentIndex + itemsPerPage);
+        const startIndex = currentPage * itemsPerPage;
+        const visibleVideos = videos.slice(startIndex, startIndex + itemsPerPage);
 
         container.innerHTML = visibleVideos.map(video => {
-            const parsed = parseInstagramUrl(video.rawUrl);
+            const rawUrl = video.url || video.rawUrl || '';
+            const parsed = parseInstagramUrl(rawUrl);
             const isEmbed = parsed.isValidInstagramUrl && parsed.isEmbeddableType && parsed.embedUrl;
 
             return `
@@ -55,7 +58,7 @@ function initInstagramLiveSection() {
                             <span class="text-xs font-bold text-white tracking-wide">arika_collabs</span>
                         </div>
                         <span class="px-2 py-0.5 rounded-full bg-[#1A1110] border border-[#DDA291]/30 text-[#DDA291] font-mono text-[10px] uppercase font-bold">
-                            ${video.badge}
+                            ${video.badge || 'INSTAGRAM'}
                         </span>
                     </div>
 
@@ -63,7 +66,7 @@ function initInstagramLiveSection() {
                     <div class="relative w-full aspect-[9/14] sm:aspect-[9/13] rounded-xl bg-black/80 overflow-hidden border border-white/5 flex items-center justify-center my-2">
                         ${isEmbed ? `
                             <iframe
-                                title="${video.title}"
+                                title="${video.title || 'Instagram Video'}"
                                 src="${parsed.embedUrl}"
                                 class="w-full h-full border-0 rounded-xl"
                                 loading="lazy"
@@ -82,9 +85,9 @@ function initInstagramLiveSection() {
                                         </div>
                                     </div>
                                 </div>
-                                <h4 class="font-bold text-sm text-white mb-1 line-clamp-1">${video.title}</h4>
+                                <h4 class="font-bold text-sm text-white mb-1 line-clamp-1">${video.title || 'Instagram Content'}</h4>
                                 <p class="text-xs text-gray-400 mb-4 font-sans line-clamp-2">Watch official video stream directly on Instagram</p>
-                                <a href="${video.rawUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-bold text-xs hover:opacity-90 shadow-md transition-all">
+                                <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-bold text-xs hover:opacity-90 shadow-md transition-all">
                                     <span>Watch Stream</span>
                                     <span class="text-xs">↗</span>
                                 </a>
@@ -94,8 +97,8 @@ function initInstagramLiveSection() {
 
                     <!-- Card Bottom Info -->
                     <div class="px-2 pt-2 flex items-center justify-between">
-                        <span class="text-xs text-gray-300 font-medium line-clamp-1 truncate max-w-[180px]">${video.title}</span>
-                        <a href="${video.rawUrl}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-[#DDA291] hover:text-white transition-colors shrink-0">
+                        <span class="text-xs text-gray-300 font-medium line-clamp-1 truncate max-w-[180px]">${video.title || 'Instagram Video'}</span>
+                        <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-[#DDA291] hover:text-white transition-colors shrink-0">
                             Open App ↗
                         </a>
                     </div>
@@ -105,40 +108,38 @@ function initInstagramLiveSection() {
 
         // Pagination Dots
         if (dotsContainer) {
-            const totalPages = Math.max(1, videos.length - itemsPerPage + 1);
             dotsContainer.innerHTML = Array.from({ length: totalPages }).map((_, idx) => `
                 <button
                     data-page="${idx}"
                     aria-label="Go to slide ${idx + 1}"
-                    class="h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 bg-[#DDA291]' : 'w-2 bg-white/20 hover:bg-white/40'}"
+                    class="h-2 rounded-full transition-all duration-300 ${idx === currentPage ? 'w-6 bg-[#DDA291]' : 'w-2 bg-white/20 hover:bg-white/40'}"
                 ></button>
             `).join('');
 
             dotsContainer.querySelectorAll<HTMLButtonElement>('button[data-page]').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const page = parseInt(btn.getAttribute('data-page') || '0', 10);
-                    currentIndex = page;
+                    currentPage = page;
                     renderCarousel();
                 });
             });
         }
 
         if (prevBtn) {
-            (prevBtn as HTMLButtonElement).disabled = currentIndex <= 0;
-            prevBtn.style.opacity = currentIndex <= 0 ? '0.4' : '1';
+            (prevBtn as HTMLButtonElement).disabled = currentPage <= 0;
+            prevBtn.style.opacity = currentPage <= 0 ? '0.4' : '1';
         }
 
         if (nextBtn) {
-            const maxIdx = Math.max(0, videos.length - itemsPerPage);
-            (nextBtn as HTMLButtonElement).disabled = currentIndex >= maxIdx;
-            nextBtn.style.opacity = currentIndex >= maxIdx ? '0.4' : '1';
+            (nextBtn as HTMLButtonElement).disabled = currentPage >= totalPages - 1;
+            nextBtn.style.opacity = currentPage >= totalPages - 1 ? '0.4' : '1';
         }
     }
 
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
+            if (currentPage > 0) {
+                currentPage--;
                 renderCarousel();
             }
         });
@@ -147,9 +148,9 @@ function initInstagramLiveSection() {
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             const itemsPerPage = getItemsPerPage();
-            const maxIdx = Math.max(0, videos.length - itemsPerPage);
-            if (currentIndex < maxIdx) {
-                currentIndex++;
+            const totalPages = Math.ceil(videos.length / itemsPerPage);
+            if (currentPage < totalPages - 1) {
+                currentPage++;
                 renderCarousel();
             }
         });

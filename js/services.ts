@@ -5,10 +5,12 @@ import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initSplashScreen } from './splashScreen';
+import { initServicesSkeleton } from './servicesSkeleton';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
+    initServicesSkeleton();
     initSplashScreen({ duration: 3000 });
 
     initCustomCursor();

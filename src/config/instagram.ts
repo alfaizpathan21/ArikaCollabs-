@@ -8,51 +8,91 @@
  */
 
 export interface InstagramVideoItem {
-    id: string;
-    title: string;
-    badge: string;
-    rawUrl: string;
-    aspectRatio: '9:16' | '1:1' | '16:9';
+    id: number | string;
+    url: string;
+    rawUrl?: string;
+    title?: string;
+    badge?: string;
+    aspectRatio?: '9:16' | '1:1' | '16:9';
 }
 
-// Developer-controlled video list
-export const DEFAULT_INSTAGRAM_VIDEOS: InstagramVideoItem[] = [
+// Centralized developer-controlled list of 9 Instagram videos
+export const instagramVideos: InstagramVideoItem[] = [
     {
-        id: 'ig-live-1',
-        title: 'Arika Digital Influence & Brand Live Session',
-        badge: 'LIVE BROADCAST',
-        rawUrl: 'https://www.instagram.com/arika_collabs/live/',
-        aspectRatio: '9:16'
-    },
-    {
-        id: 'ig-reel-1',
-        title: 'Exclusive Luxury Campaign Highlight 2026',
+        id: 1,
+        url: 'https://www.instagram.com/reel/DaxcMQyMDng/',
+        rawUrl: 'https://www.instagram.com/reel/DaxcMQyMDng/',
+        title: 'Arika Featured Reel 1',
         badge: 'REEL',
-        rawUrl: 'https://www.instagram.com/p/C3x9L7mO8x_/',
         aspectRatio: '9:16'
     },
     {
-        id: 'ig-post-1',
-        title: 'Behind the Scenes: Creative Collaboration',
+        id: 2,
+        url: 'https://www.instagram.com/p/C3x9L7mO8x_/',
+        rawUrl: 'https://www.instagram.com/p/C3x9L7mO8x_/',
+        title: 'Arika Campaign Post 2',
         badge: 'CAMPAIGN',
+        aspectRatio: '9:16'
+    },
+    {
+        id: 3,
+        url: 'https://www.instagram.com/p/C2v8K6mN7w_/',
         rawUrl: 'https://www.instagram.com/p/C2v8K6mN7w_/',
+        title: 'Arika Brand Highlight 3',
+        badge: 'SPOTLIGHT',
         aspectRatio: '1:1'
     },
     {
-        id: 'ig-reel-2',
-        title: 'Influencer Talent Spotlight & High Fashion',
-        badge: 'SPOTLIGHT',
+        id: 4,
+        url: 'https://www.instagram.com/p/C1u7J5mL6v_/',
         rawUrl: 'https://www.instagram.com/p/C1u7J5mL6v_/',
+        title: 'Arika Collaboration 4',
+        badge: 'COLLAB',
         aspectRatio: '9:16'
     },
     {
-        id: 'ig-post-2',
-        title: 'Community Q&A & Upcoming Events',
-        badge: 'COMMUNITY',
+        id: 5,
+        url: 'https://www.instagram.com/p/C0t6I4mK5u_/',
         rawUrl: 'https://www.instagram.com/p/C0t6I4mK5u_/',
+        title: 'Arika Influencer Showcase 5',
+        badge: 'SHOWCASE',
+        aspectRatio: '1:1'
+    },
+    {
+        id: 6,
+        url: 'https://www.instagram.com/reel/C8x9L7mO8x_/',
+        rawUrl: 'https://www.instagram.com/reel/C8x9L7mO8x_/',
+        title: 'Arika Digital Content 6',
+        badge: 'REEL',
+        aspectRatio: '9:16'
+    },
+    {
+        id: 7,
+        url: 'https://www.instagram.com/p/C7v8K6mN7w_/',
+        rawUrl: 'https://www.instagram.com/p/C7v8K6mN7w_/',
+        title: 'Arika Lifestyle Feature 7',
+        badge: 'LIFESTYLE',
+        aspectRatio: '1:1'
+    },
+    {
+        id: 8,
+        url: 'https://www.instagram.com/p/C6u7J5mL6v_/',
+        rawUrl: 'https://www.instagram.com/p/C6u7J5mL6v_/',
+        title: 'Arika Behind The Scenes 8',
+        badge: 'BTS',
+        aspectRatio: '9:16'
+    },
+    {
+        id: 9,
+        url: 'https://www.instagram.com/p/C5t6I4mK5u_/',
+        rawUrl: 'https://www.instagram.com/p/C5t6I4mK5u_/',
+        title: 'Arika Exclusive Event 9',
+        badge: 'EVENT',
         aspectRatio: '1:1'
     }
 ];
+
+export const DEFAULT_INSTAGRAM_VIDEOS = instagramVideos;
 
 export interface InstagramLiveConfig {
     rawUrl: string;
@@ -156,41 +196,21 @@ export function getInstagramLiveConfig(customUrl?: string): InstagramLiveConfig 
  * Get Developer-Configured List of Instagram Videos
  */
 export function getInstagramVideoList(): InstagramVideoItem[] {
+    return instagramVideos.map((item) => ({
+        ...item,
+        rawUrl: item.rawUrl || item.url,
+        url: item.url || item.rawUrl || '',
+        title: item.title || `Arika Featured Video ${item.id}`,
+        badge: item.badge || 'INSTAGRAM',
+        aspectRatio: item.aspectRatio || '9:16'
+    }));
+}
+
+/**
+ * Get Developer-Configured Autoplay Muted Video URL
+ */
+export function getAutoplayMutedVideoUrl(): string {
     const metaEnv = (import.meta as unknown as { env?: Record<string, string> }).env;
-    const envVideosRaw = metaEnv ? metaEnv.VITE_INSTAGRAM_VIDEOS : undefined;
-
-    if (envVideosRaw) {
-        try {
-            // Check if JSON array
-            if (envVideosRaw.trim().startsWith('[')) {
-                const parsed = JSON.parse(envVideosRaw);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    return parsed.map((url: string, index: number) => ({
-                        id: `env-ig-${index}`,
-                        title: `Arika Featured Post ${index + 1}`,
-                        badge: 'INSTAGRAM',
-                        rawUrl: url,
-                        aspectRatio: '9:16'
-                    }));
-                }
-            } else {
-                // Comma separated URLs
-                const urls = envVideosRaw.split(',').map(s => s.trim()).filter(Boolean);
-                if (urls.length > 0) {
-                    return urls.map((url, index) => ({
-                        id: `env-ig-${index}`,
-                        title: `Arika Featured Post ${index + 1}`,
-                        badge: 'INSTAGRAM',
-                        rawUrl: url,
-                        aspectRatio: '9:16'
-                    }));
-                }
-            }
-        } catch {
-            // Fallback to DEFAULT_INSTAGRAM_VIDEOS
-        }
-    }
-
-    return DEFAULT_INSTAGRAM_VIDEOS;
+    return (metaEnv?.VITE_AUTOPLAY_MUTED_VIDEO_URL || '').trim();
 }
 

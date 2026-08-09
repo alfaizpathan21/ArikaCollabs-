@@ -640,17 +640,20 @@ html.light #ig-cards-container > div:hover {
 }
 
 html.light .instagram-card .border-b,
-html.light #ig-cards-container .border-b {
+html.light #ig-cards-container .border-b,
+html.light #instagram-live-section .border-b {
   border-color: rgba(198, 136, 120, 0.2) !important;
 }
 
 html.light .instagram-card .border-t,
-html.light #ig-cards-container .border-t {
+html.light #ig-cards-container .border-t,
+html.light #instagram-live-section .border-t {
   border-color: rgba(198, 136, 120, 0.2) !important;
 }
 
 html.light .instagram-card span.font-mono,
-html.light #ig-cards-container span.font-mono {
+html.light #ig-cards-container span.font-mono,
+html.light #instagram-live-section span.font-mono {
   background-color: #F4F0EB !important;
   color: #C68878 !important;
   border-color: rgba(198, 136, 120, 0.35) !important;
@@ -658,24 +661,64 @@ html.light #ig-cards-container span.font-mono {
 
 html.light .instagram-card .bg-black\/90,
 html.light .instagram-card .bg-black\/80,
-html.light #ig-cards-container .bg-black\/80 {
+html.light #ig-cards-container .bg-black\/80,
+html.light #instagram-live-section .bg-black\/80 {
   background-color: #F8F5F1 !important;
   border-color: rgba(198, 136, 120, 0.2) !important;
 }
 
 html.light .instagram-card .bg-gradient-to-b,
-html.light #ig-cards-container .bg-gradient-to-b {
+html.light #ig-cards-container .bg-gradient-to-b,
+html.light #instagram-live-section .bg-gradient-to-b {
   background: linear-gradient(180deg, #F9F6F3 0%, #F2ECE4 100%) !important;
 }
 
 html.light .instagram-card .bg-\[\#121010\],
-html.light #ig-cards-container .bg-\[\#121010\] {
+html.light #ig-cards-container .bg-\[\#121010\],
+html.light #instagram-live-section .bg-\[\#121010\] {
   background-color: #FFFFFF !important;
 }
 
 html.light .instagram-card .bg-\[\#151211\],
-html.light #ig-cards-container .bg-\[\#151211\] {
+html.light #ig-cards-container .bg-\[\#151211\],
+html.light #instagram-live-section .bg-\[\#151211\] {
   background-color: #F8F5F1 !important;
+}
+
+html.light .instagram-card svg.fill-white,
+html.light #ig-cards-container svg.fill-white,
+html.light #instagram-live-section svg.fill-white {
+  fill: #C68878 !important;
+}
+
+html.light .instagram-card h4,
+html.light #ig-cards-container h4,
+html.light #instagram-live-section h4 {
+  color: #121110 !important;
+}
+
+html.light .instagram-card p,
+html.light #ig-cards-container p,
+html.light #instagram-live-section p,
+html.light .instagram-card .text-gray-300,
+html.light .instagram-card .text-gray-400,
+html.light #ig-cards-container .text-gray-300,
+html.light #ig-cards-container .text-gray-400,
+html.light #instagram-live-section .text-gray-300,
+html.light #instagram-live-section .text-gray-400 {
+  color: #5C5855 !important;
+}
+
+html.light .instagram-card .bg-gradient-to-r,
+html.light #ig-cards-container .bg-gradient-to-r,
+html.light #instagram-live-section .bg-gradient-to-r {
+  color: #FFFFFF !important;
+}
+
+html.light .instagram-card .bg-gradient-to-r *,
+html.light #ig-cards-container .bg-gradient-to-r *,
+html.light #instagram-live-section .bg-gradient-to-r * {
+  color: #FFFFFF !important;
 }
 
 html.light #ig-pagination-dots button,
@@ -691,12 +734,14 @@ html.light #instagram-live-section button[aria-label*="slide"].w-6 {
 }
 
 html.light .instagram-card a.text-\[\#DDA291\],
-html.light #ig-cards-container a.text-\[\#DDA291\] {
+html.light #ig-cards-container a.text-\[\#DDA291\],
+html.light #instagram-live-section a.text-\[\#DDA291\] {
   color: #C68878 !important;
 }
 
 html.light .instagram-card a.text-\[\#DDA291\]:hover,
-html.light #ig-cards-container a.text-\[\#DDA291\]:hover {
+html.light #ig-cards-container a.text-\[\#DDA291\]:hover,
+html.light #instagram-live-section a.text-\[\#DDA291\]:hover {
   color: #121110 !important;
 }
 
@@ -853,6 +898,59 @@ html.light .faq-accordion[open] {
 .btn-glow-outline:active {
   transform: translateY(0) scale(0.97);
 }
+
+/* ==========================================
+   Shimmering Skeleton Loader for Services Preview
+   ========================================== */
+@keyframes shimmerWave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(221, 162, 145, 0.22) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerWave 2s infinite linear;
+}
+
+html.light .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(198, 136, 120, 0.08) 0%,
+    rgba(198, 136, 120, 0.32) 50%,
+    rgba(198, 136, 120, 0.08) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerWave 2s infinite linear;
+}
+
+.skeleton-card {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  border: 1px solid rgba(221, 162, 145, 0.2);
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+html.light .skeleton-card {
+  border-color: rgba(198, 136, 120, 0.3);
+  background-color: #FFFFFF;
+  box-shadow: 0 10px 30px -10px rgba(198, 136, 120, 0.15);
+}
+
 
 
 

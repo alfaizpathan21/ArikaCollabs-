@@ -18,7 +18,8 @@ const InstagramCard: React.FC<InstagramCardProps> = ({ item, isVisible }) => {
     const [hasError, setHasError] = useState<boolean>(false);
 
     useEffect(() => {
-        const config = parseInstagramUrl(item.rawUrl);
+        const videoUrl = item.url || item.rawUrl || '';
+        const config = parseInstagramUrl(videoUrl);
         setParsedConfig(config);
 
         // Independent timer to prevent sticking in loading state
@@ -27,7 +28,7 @@ const InstagramCard: React.FC<InstagramCardProps> = ({ item, isVisible }) => {
         }, 1200);
 
         return () => clearTimeout(timer);
-    }, [item.rawUrl]);
+    }, [item.url, item.rawUrl]);
 
     const handleIframeLoad = () => {
         setIsLoading(false);
@@ -122,7 +123,7 @@ const InstagramCard: React.FC<InstagramCardProps> = ({ item, isVisible }) => {
                         </p>
 
                         <a
-                            href={item.rawUrl}
+                            href={item.url || item.rawUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-bold text-xs hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md"
@@ -141,7 +142,7 @@ const InstagramCard: React.FC<InstagramCardProps> = ({ item, isVisible }) => {
                 </span>
 
                 <a
-                    href={item.rawUrl}
+                    href={item.url || item.rawUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#DDA291] hover:text-white font-semibold text-xs transition-colors shrink-0 flex items-center gap-0.5"
@@ -160,7 +161,7 @@ interface InstagramLiveSectionProps {
 
 export const InstagramLiveSection: React.FC<InstagramLiveSectionProps> = ({ className = '' }) => {
     const [videoList, setVideoList] = useState<InstagramVideoItem[]>([]);
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(0);
 
     useEffect(() => {
         // Load developer-configured video list
@@ -169,16 +170,21 @@ export const InstagramLiveSection: React.FC<InstagramLiveSectionProps> = ({ clas
     }, []);
 
     const totalVideos = videoList.length;
+    const itemsPerPage = 3;
+    const totalPages = Math.ceil(totalVideos / itemsPerPage);
 
     const handleNext = () => {
-        if (totalVideos === 0) return;
-        setCurrentIndex((prev) => (prev + 1) % totalVideos);
+        if (totalPages === 0) return;
+        setCurrentPage((prev) => (prev + 1) % totalPages);
     };
 
     const handlePrev = () => {
-        if (totalVideos === 0) return;
-        setCurrentIndex((prev) => (prev - 1 + totalVideos) % totalVideos);
+        if (totalPages === 0) return;
+        setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
     };
+
+    const startIndex = currentPage * itemsPerPage;
+    const currentVideos = videoList.slice(startIndex, startIndex + itemsPerPage);
 
     return (
         <section
@@ -221,7 +227,7 @@ export const InstagramLiveSection: React.FC<InstagramLiveSectionProps> = ({ clas
                     </div>
 
                     {/* Navigation Arrows */}
-                    {totalVideos > 1 && (
+                    {totalPages > 1 && (
                         <div className="flex items-center gap-3 shrink-0">
                             <button
                                 onClick={handlePrev}
@@ -245,37 +251,24 @@ export const InstagramLiveSection: React.FC<InstagramLiveSectionProps> = ({ clas
                 <div className="relative overflow-hidden w-full">
                     {/* Responsive Grid for Visible Slides */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {videoList.length > 0 && [0, 1, 2].map((offset) => {
-                            const index = (currentIndex + offset) % totalVideos;
-                            const item = videoList[index];
-                            if (!item) return null;
-
-                            // Show index 0 always, index 1 on md+, index 2 on lg+
-                            const visibilityClass = offset === 0
-                                ? 'block'
-                                : offset === 1
-                                    ? 'hidden md:block'
-                                    : 'hidden lg:block';
-
-                            return (
-                                <div key={`${item.id}-${index}`} className={`${visibilityClass} w-full`}>
-                                    <InstagramCard item={item} isVisible={true} />
-                                </div>
-                            );
-                        })}
+                        {currentVideos.map((item) => (
+                            <div key={item.id} className="w-full">
+                                <InstagramCard item={item} isVisible={true} />
+                            </div>
+                        ))}
                     </div>
                 </div>
 
                 {/* Pagination Dots */}
-                {totalVideos > 1 && (
+                {totalPages > 1 && (
                     <div className="flex items-center justify-center gap-2 mt-8">
-                        {videoList.map((_, idx) => (
+                        {Array.from({ length: totalPages }).map((_, idx) => (
                             <button
                                 key={idx}
-                                onClick={() => setCurrentIndex(idx)}
+                                onClick={() => setCurrentPage(idx)}
                                 aria-label={`Go to slide ${idx + 1}`}
                                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                                    idx === currentIndex
+                                    idx === currentPage
                                         ? 'w-8 bg-[#DDA291]'
                                         : 'w-2 bg-white/20 hover:bg-white/40'
                                 }`}

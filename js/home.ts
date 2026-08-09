@@ -7,11 +7,13 @@ import { initSplashScreen } from './splashScreen';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
+import { initServicesSkeleton } from './servicesSkeleton';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
     initPortfolioParallax();
+    initServicesSkeleton();
 
     // Initialize Opening Luxury Splash Screen
     initSplashScreen({
