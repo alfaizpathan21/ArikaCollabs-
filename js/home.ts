@@ -8,6 +8,7 @@ import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
 import { initServicesSkeleton } from './servicesSkeleton';
+import emailjs from 'emailjs-com';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
@@ -250,4 +251,117 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initMailtoHandler();
+
+    // Homepage Quick Inquiry Form Handler
+    const homeForm = document.querySelector<HTMLFormElement>('form');
+    if (homeForm) {
+        homeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const existingBanner = homeForm.querySelector('.form-error-banner');
+            if (existingBanner) existingBanner.remove();
+
+            const nameInput = homeForm.querySelector<HTMLInputElement>('input[placeholder="Your Name"]');
+            const emailInput = homeForm.querySelector<HTMLInputElement>('input[placeholder="Your Email"]');
+            const messageInput = homeForm.querySelector<HTMLTextAreaElement>('textarea');
+            const submitBtn = homeForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+            const name = nameInput ? nameInput.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+            const comment = messageInput ? messageInput.value.trim() : '';
+            const messageContent = comment ? comment : `Quick campaign inquiry submitted from homepage by ${name} (${email}).`;
+
+            if (!name) {
+                if (nameInput) nameInput.focus();
+                return;
+            }
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (emailInput) emailInput.focus();
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
+                submitBtn.innerHTML = `SENDING INQUIRY...`;
+            }
+
+            try {
+                const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+                const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+                const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+                let success = false;
+
+                if (serviceId && templateId && publicKey) {
+                    try {
+                        const templateParams = {
+                            to_email: 'alfaiz.pathan@arikacollabs.com',
+                            to_name: 'Alfaiz Pathan',
+                            from_name: name,
+                            user_name: name,
+                            name: name,
+                            from_email: email,
+                            user_email: email,
+                            email: email,
+                            reply_to: email,
+                            service: 'Homepage Quick Inquiry',
+                            inquiry_type: 'Homepage Quick Inquiry',
+                            subject: `[ARIKA COLLABS Inquiry] Quick Inquiry from ${name}`,
+                            message: messageContent,
+                        };
+
+                        await emailjs.send(
+                            serviceId,
+                            templateId,
+                            templateParams,
+                            publicKey
+                        );
+                        success = true;
+                    } catch (emailJsErr: any) {
+                        console.warn('[Home Page] EmailJS client dispatch failed, attempting backend endpoint...', emailJsErr);
+                    }
+                }
+
+                if (!success) {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            service: 'Homepage Quick Inquiry',
+                            message: messageContent
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.error || 'Submission failed');
+                    }
+                }
+
+                homeForm.innerHTML = `
+                    <div class="p-8 rounded-2xl bg-primary/10 border border-primary text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-3 block">verified_user</span>
+                        <h4 class="text-xl font-bold text-white mb-2">Inquiry Sent, ${name}!</h4>
+                        <p class="text-sm text-gray-300">Your message has been sent to <strong>alfaiz.pathan@arikacollabs.com</strong>. We will contact you at <strong>${email}</strong> shortly.</p>
+                    </div>
+                `;
+            } catch (err: any) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    const originalText = submitBtn.getAttribute('data-original-text');
+                    if (originalText) submitBtn.innerHTML = originalText;
+                }
+
+                const banner = document.createElement('div');
+                banner.className = 'form-error-banner p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-mono my-3';
+                banner.textContent = err.message || 'Failed to send inquiry. Please try again.';
+                homeForm.insertBefore(banner, homeForm.firstChild);
+            }
+        });
+    }
 });

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface FormData {
@@ -42,6 +43,7 @@ export const ContactForm: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [submittedData, setSubmittedData] = useState<FormData | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
 
     const [copiedEmail, setCopiedEmail] = useState(false);
 
@@ -117,8 +119,9 @@ export const ContactForm: React.FC = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitError(null);
 
         // Mark all fields as touched
         setTouched({
@@ -131,14 +134,74 @@ export const ContactForm: React.FC = () => {
         const validationErrors = validate(formData);
         setErrors(validationErrors);
 
-        // If no errors, proceed with simulated submission
+        // If no errors, proceed with API submission
         if (Object.keys(validationErrors).length === 0) {
             setIsSubmitting(true);
-            setTimeout(() => {
+            try {
+                const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+                const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+                const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+                let success = false;
+
+                // Try client-side EmailJS if keys are provided
+                if (serviceId && templateId && publicKey) {
+                    try {
+                        const templateParams = {
+                            to_email: 'alfaiz.pathan@arikacollabs.com',
+                            to_name: 'Alfaiz Pathan',
+                            from_name: formData.name,
+                            user_name: formData.name,
+                            name: formData.name,
+                            from_email: formData.email,
+                            user_email: formData.email,
+                            email: formData.email,
+                            reply_to: formData.email,
+                            service: formData.service,
+                            inquiry_type: formData.service,
+                            subject: `[ARIKA COLLABS Inquiry] ${formData.service} from ${formData.name}`,
+                            message: formData.message,
+                        };
+
+                        await emailjs.send(
+                            serviceId,
+                            templateId,
+                            templateParams,
+                            publicKey
+                        );
+                        success = true;
+                    } catch (emailJsErr: any) {
+                        console.warn('[ContactForm] EmailJS client dispatch failed, attempting backend endpoint...', emailJsErr);
+                    }
+                }
+
+                // Fallback to backend API route (which also supports EmailJS server-side)
+                if (!success) {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: formData.name,
+                            email: formData.email,
+                            service: formData.service,
+                            message: formData.message
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.error || 'Failed to submit inquiry. Please try again.');
+                    }
+                }
+
                 setIsSubmitting(false);
                 setSubmittedData(formData);
                 setIsSubmitted(true);
-            }, 1200);
+            } catch (err: any) {
+                setIsSubmitting(false);
+                setSubmitError(err.message || 'An error occurred while sending your inquiry. Please try again.');
+            }
         }
     };
 
@@ -444,6 +507,14 @@ export const ContactForm: React.FC = () => {
                                     </p>
                                 )}
                             </div>
+
+                            {/* Submit Error Banner */}
+                            {submitError && (
+                                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/40 text-red-300 text-xs font-mono flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-red-400 text-lg flex-shrink-0">error</span>
+                                    <span>{submitError}</span>
+                                </div>
+                            )}
 
                             {/* Submit Button */}
                             <div className="pt-2">
