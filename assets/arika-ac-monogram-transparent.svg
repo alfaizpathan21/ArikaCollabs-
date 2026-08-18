@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tgRoseGoldA" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#FFF2EE" />
+      <stop offset="20%" stop-color="#F3D1C8" />
+      <stop offset="50%" stop-color="#DDA291" />
+      <stop offset="80%" stop-color="#C68270" />
+      <stop offset="100%" stop-color="#9A5544" />
+    </linearGradient>
+    <linearGradient id="tgRoseGoldC" x1="85%" y1="15%" x2="15%" y2="85%">
+      <stop offset="0%" stop-color="#FDE8E2" />
+      <stop offset="30%" stop-color="#E5B2A3" />
+      <stop offset="60%" stop-color="#DDA291" />
+      <stop offset="85%" stop-color="#B87360" />
+      <stop offset="100%" stop-color="#844535" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#DDA291" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <g filter="url(#subtleGlow)">
+    <!-- C Underlay -->
+    <path 
+      d="M 365 160 
+         C 330 115, 235 110, 175 160 
+         C 110 215, 110 295, 170 348 
+         C 230 395, 335 390, 368 340" 
+      fill="none" 
+      stroke="url(#tgRoseGoldC)" 
+      stroke-width="26" 
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- A Left Stem Under-Cut (Cutout for clean overlapping) -->
+    <path d="M 250 105 L 148 395" fill="none" stroke="#000000" stroke-opacity="0.15" stroke-width="34" stroke-linecap="round" />
+    <path d="M 250 105 L 148 395" fill="none" stroke="url(#tgRoseGoldA)" stroke-width="26" stroke-linecap="round" />
+
+    <!-- A Crossbar -->
+    <path d="M 192 285 L 308 285" fill="none" stroke="url(#tgRoseGoldA)" stroke-width="22" stroke-linecap="round" />
+
+    <!-- A Right Stem -->
+    <path d="M 250 105 L 352 395" fill="none" stroke="url(#tgRoseGoldA)" stroke-width="26" stroke-linecap="round" />
+
+    <!-- C Top Interlock Segment -->
+    <path 
+      d="M 295 125 C 335 138, 365 160, 365 160" 
+      fill="none" 
+      stroke="url(#tgRoseGoldC)" 
+      stroke-width="26" 
+      stroke-linecap="round" 
+    />
+    
+    <!-- Top Apex -->
+    <circle cx="250" cy="105" r="13" fill="url(#tgRoseGoldA)" />
+    
+    <!-- Top Star Accent -->
+    <path d="M 250 56 L 254 66 L 264 70 L 254 74 L 250 84 L 246 74 L 236 70 L 246 66 Z" fill="url(#tgRoseGoldA)" opacity="0.9" />
+  </g>
+</svg>

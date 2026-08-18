@@ -5,7 +5,6 @@ import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
-import { initSplashScreen } from './splashScreen';
 import { getInstagramVideoList, parseInstagramUrl, InstagramVideoItem } from '../src/config/instagram';
 
 function initInstagramLiveSection() {
@@ -163,7 +162,7 @@ function initInstagramLiveSection() {
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
-    initSplashScreen({ duration: 3000 });
+    document.body.classList.add('splash-complete');
     initInstagramLiveSection();
 
     initCustomCursor();

@@ -286,7 +286,7 @@
     </section>
 
     <!-- Interactive Why Choose ARIKA Section -->
-    <section class="py-20 bg-surface relative overflow-hidden">
+    <section id="why-choose-section" class="why-choose-section py-20 bg-surface relative overflow-hidden">
         <!-- Ambient background lighting bloom -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#DDA291]/5 blur-[140px] pointer-events-none rounded-full"></div>
 
@@ -803,21 +803,65 @@
                         </div>
                     </div>
                 </div>
-                <div class="glass-panel p-12 rounded-3xl reveal border-primary/20">
-                    <h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-white">Ready to scale?</h3>
-                    <p class="text-on-surface-variant mb-10">Join our portfolio of elite brands and creators. Let's build something extraordinary together.</p>
-                    <form class="space-y-6">
-                        <div class="border-b border-outline-variant focus-within:border-primary transition-all">
-                            <input class="bg-transparent border-none w-full py-4 text-on-surface focus:ring-0 placeholder:text-outline" placeholder="Your Name" type="text" required/>
+                <div class="glass-panel p-8 sm:p-12 rounded-3xl reveal border border-primary/20 shadow-2xl relative overflow-hidden">
+                    <!-- Subtle top glow accent -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-widest mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Fast-Track Onboarding</span>
+                    </div>
+
+                    <h3 class="font-headline-md text-2xl md:text-3xl font-bold text-white mb-2">Ready to scale?</h3>
+                    <p class="text-on-surface-variant text-sm md:text-base mb-8 leading-relaxed">Join our portfolio of elite brands and creators. Let's build high-converting campaigns together.</p>
+                    
+                    <form id="home-inquiry-form" class="space-y-5">
+                        <div>
+                            <label for="home-inquiry-name" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-primary mb-2">Your Name</label>
+                            <div class="relative flex items-center">
+                                <span class="material-symbols-outlined absolute left-4 text-on-surface-variant text-lg pointer-events-none">person</span>
+                                <input 
+                                    id="home-inquiry-name"
+                                    name="name"
+                                    class="w-full bg-black/40 border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-white placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-all text-sm font-medium" 
+                                    placeholder="Enter your full name or brand handle" 
+                                    type="text" 
+                                    required
+                                />
+                            </div>
                         </div>
-                        <div class="border-b border-outline-variant focus-within:border-primary transition-all">
-                            <input class="bg-transparent border-none w-full py-4 text-on-surface focus:ring-0 placeholder:text-outline" placeholder="Your Email" type="email" required/>
+
+                        <div>
+                            <label for="home-inquiry-email" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-primary mb-2">Email Address</label>
+                            <div class="relative flex items-center">
+                                <span class="material-symbols-outlined absolute left-4 text-on-surface-variant text-lg pointer-events-none">mail</span>
+                                <input 
+                                    id="home-inquiry-email"
+                                    name="email"
+                                    class="w-full bg-black/40 border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-white placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-all text-sm font-medium" 
+                                    placeholder="you@brand.com" 
+                                    type="email" 
+                                    required
+                                />
+                            </div>
                         </div>
-                        <div class="border-b border-outline-variant focus-within:border-primary transition-all">
-                            <textarea class="bg-transparent border-none w-full py-4 text-on-surface focus:ring-0 placeholder:text-outline resize-none" placeholder="Your Message / Comments" rows="3"></textarea>
+
+                        <div>
+                            <label for="home-inquiry-message" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-primary mb-2">Campaign Vision / Comments</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-3.5 text-on-surface-variant text-lg pointer-events-none">chat</span>
+                                <textarea 
+                                    id="home-inquiry-message"
+                                    name="message"
+                                    class="w-full bg-black/40 border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-white placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-all text-sm font-medium resize-none custom-scrollbar h-28" 
+                                    placeholder="Tell us about your brand goals, target creators, or timeline..."
+                                ></textarea>
+                            </div>
                         </div>
-                        <button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-5 rounded-full btn-shine shadow-lg shadow-primary/20" type="submit">
-                            INQUIRE NOW
+
+                        <button id="home-inquire-btn" class="w-full bg-primary text-on-primary font-bold py-4 md:py-4.5 rounded-xl hover:bg-primary/95 hover:shadow-[0_0_25px_rgba(221,162,145,0.4)] transition-all uppercase text-sm tracking-widest cursor-pointer btn-shine flex items-center justify-center gap-2 mt-2" type="submit">
+                            <span>INQUIRE NOW</span>
+                            <span class="material-symbols-outlined text-base">send</span>
                         </button>
                     </form>
                 </div>

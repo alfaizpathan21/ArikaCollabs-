@@ -55,9 +55,9 @@ export const teamMembers: TeamMember[] = [
         image: "/images/team/alfaiz.jpg",
         description: "Optimizing campaign execution workflows, real-time analytics tracking, and scalable tech infrastructure.",
         socials: {
-            instagram: "https://www.instagram.com/arika_collabs/",
-            linkedin: "https://www.linkedin.com/in/arika-collabs",
-            email: "alfaiz@arikacollabs.com"
+            instagram: "https://www.instagram.com/alfaiz_.pathan_/?hl=en",
+            linkedin: "https://www.linkedin.com/in/alfaiz-pathan-b39736147/?skipRedirect=true",
+            email: "alfaiz.pathan@arikacollabs.com"
         }
     }
 ];

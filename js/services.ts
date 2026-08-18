@@ -4,14 +4,13 @@ import { initBackToTop } from './backToTop';
 import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
-import { initSplashScreen } from './splashScreen';
 import { initServicesSkeleton } from './servicesSkeleton';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
     initServicesSkeleton();
-    initSplashScreen({ duration: 3000 });
+    document.body.classList.add('splash-complete');
 
     initCustomCursor();
     initScrollReveal();

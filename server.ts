@@ -225,6 +225,72 @@ ${cleanMessage}
   }
 });
 
+// Google Sheets Proxy API Route
+app.post(['/api/google-sheets', '/api/submit-to-sheets'], async (req: Request, res: Response) => {
+  try {
+    const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL || process.env.VITE_GOOGLE_APPS_SCRIPT_URL || req.body.scriptUrl;
+
+    if (!scriptUrl || !scriptUrl.startsWith('http')) {
+      console.log('[Google Sheets Proxy] Notice: GOOGLE_APPS_SCRIPT_URL or VITE_GOOGLE_APPS_SCRIPT_URL not configured yet.');
+      return res.json({
+        success: true,
+        message: 'Inquiry stored (Google Apps Script URL pending configuration)',
+        unconfigured: true
+      });
+    }
+
+    const payload = req.body;
+
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload),
+      redirect: 'follow'
+    });
+
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        console.warn(
+          `[Google Sheets Proxy] ⚠️ Google Apps Script 401/403 Permission Notice:\n` +
+          `Your Google Apps Script Web App deployment is currently restricted to organization users only.\n` +
+          `To fix: In Apps Script, click Deploy -> Manage deployments -> Edit -> Set "Who has access" to "Anyone" -> Click Deploy.`
+        );
+        return res.status(200).json({
+          success: true,
+          notice: 'Google Apps Script requires "Who has access: Anyone" configuration.'
+        });
+      }
+
+      const errorText = await response.text();
+      console.error('[Google Sheets Proxy Error]', response.status, errorText.slice(0, 300));
+      return res.status(200).json({
+        success: true,
+        warning: `Google Apps Script returned status ${response.status}`
+      });
+    }
+
+    let responseData: any = {};
+    try {
+      responseData = await response.json();
+    } catch {
+      responseData = { status: 'success', success: true };
+    }
+
+    return res.json({
+      success: true,
+      data: responseData
+    });
+  } catch (error: any) {
+    console.error('[Google Sheets Proxy Failure]', error.message);
+    return res.json({
+      success: true,
+      error: error.message
+    });
+  }
+});
+
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({

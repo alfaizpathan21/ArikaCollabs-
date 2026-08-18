@@ -3,27 +3,23 @@ import { initScrollReveal } from './reveal';
 import { initBackToTop } from './backToTop';
 import { initHero3DLogo } from './hero3DLogo';
 import { initNavPreview } from './navPreview';
-import { initSplashScreen } from './splashScreen';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
 import { initPortfolioParallax } from './portfolioMotion';
+import { initWhyChooseMotion } from './whyChooseMotion';
 import { initServicesSkeleton } from './servicesSkeleton';
 import emailjs from 'emailjs-com';
+import { showSuccessToast, showSuccessModal } from './notifications';
+import { submitToGoogleSheets } from '../src/services/googleSheets';
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
     initPortfolioParallax();
+    initWhyChooseMotion();
     initServicesSkeleton();
 
-    // Initialize Opening Luxury Splash Screen
-    initSplashScreen({
-        duration: 3000,
-        onComplete: () => {
-            // Trigger smooth reveal of home page elements
-            document.body.classList.add('splash-complete');
-        }
-    });
+    document.body.classList.add('splash-complete');
 
     initCustomCursor();
     initScrollReveal();
@@ -253,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMailtoHandler();
 
     // Homepage Quick Inquiry Form Handler
-    const homeForm = document.querySelector<HTMLFormElement>('form');
+    const homeForm = document.querySelector<HTMLFormElement>('#home-inquiry-form') || document.querySelector<HTMLFormElement>('form');
     if (homeForm) {
         homeForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -261,10 +257,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const existingBanner = homeForm.querySelector('.form-error-banner');
             if (existingBanner) existingBanner.remove();
 
-            const nameInput = homeForm.querySelector<HTMLInputElement>('input[placeholder="Your Name"]');
-            const emailInput = homeForm.querySelector<HTMLInputElement>('input[placeholder="Your Email"]');
-            const messageInput = homeForm.querySelector<HTMLTextAreaElement>('textarea');
-            const submitBtn = homeForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+            const nameInput = homeForm.querySelector<HTMLInputElement>('#home-inquiry-name') || 
+                              homeForm.querySelector<HTMLInputElement>('input[name="name"]') ||
+                              homeForm.querySelector<HTMLInputElement>('input[type="text"]');
+
+            const emailInput = homeForm.querySelector<HTMLInputElement>('#home-inquiry-email') || 
+                               homeForm.querySelector<HTMLInputElement>('input[name="email"]') ||
+                               homeForm.querySelector<HTMLInputElement>('input[type="email"]');
+
+            const messageInput = homeForm.querySelector<HTMLTextAreaElement>('#home-inquiry-message') || 
+                                 homeForm.querySelector<HTMLTextAreaElement>('textarea[name="message"]') ||
+                                 homeForm.querySelector<HTMLTextAreaElement>('textarea');
+
+            const submitBtn = homeForm.querySelector<HTMLButtonElement>('#home-inquire-btn') || 
+                              homeForm.querySelector<HTMLButtonElement>('button[type="submit"]');
 
             const name = nameInput ? nameInput.value.trim() : '';
             const email = emailInput ? emailInput.value.trim() : '';
@@ -284,10 +290,31 @@ document.addEventListener('DOMContentLoaded', () => {
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
-                submitBtn.innerHTML = `SENDING INQUIRY...`;
+                submitBtn.innerHTML = `
+                    <span class="inline-flex items-center justify-center gap-2.5 font-bold tracking-widest">
+                        <svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3.5"></circle>
+                            <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>SENDING INQUIRY...</span>
+                    </span>
+                `;
             }
 
             try {
+                // 1. Submit to Google Sheets (Google Apps Script Web App Integration)
+                const googleSheetsPromise = submitToGoogleSheets({
+                    fullName: name,
+                    companyName: '',
+                    company: '',
+                    email: email,
+                    phone: '',
+                    phoneCoordinate: '',
+                    inquiryType: 'Homepage Quick Inquiry',
+                    campaignMessage: messageContent,
+                });
+
+                // 2. Email Transmission (EmailJS / Node server)
                 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
                 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
                 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -339,17 +366,65 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = await response.json();
 
                     if (!response.ok || !data.success) {
-                        throw new Error(data.error || 'Submission failed');
+                        const gsRes = await googleSheetsPromise;
+                        if (!gsRes.success) {
+                            throw new Error(data.error || 'Submission failed');
+                        }
                     }
                 }
 
-                homeForm.innerHTML = `
-                    <div class="p-8 rounded-2xl bg-primary/10 border border-primary text-center">
-                        <span class="material-symbols-outlined text-4xl text-primary mb-3 block">verified_user</span>
-                        <h4 class="text-xl font-bold text-white mb-2">Inquiry Sent, ${name}!</h4>
-                        <p class="text-sm text-gray-300">Your message has been sent to <strong>alfaiz.pathan@arikacollabs.com</strong>. We will contact you at <strong>${email}</strong> shortly.</p>
+                // Await google sheets submission
+                await googleSheetsPromise;
+
+                // Show small toast notification
+                showSuccessToast({
+                    title: 'Inquiry Submitted',
+                    message: `Thank you! Your inquiry has been received. We'll be in touch shortly.`,
+                    duration: 5000,
+                });
+
+                // Clear any error banner
+                const existingBanner = homeForm.querySelector('.form-error-banner');
+                if (existingBanner) existingBanner.remove();
+
+                // Show small, clean inline success message
+                let successBanner = homeForm.querySelector<HTMLDivElement>('.form-success-banner');
+                if (!successBanner) {
+                    successBanner = document.createElement('div');
+                    successBanner.className = 'form-success-banner p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono mb-4 flex items-center justify-between shadow-lg transition-all animate-fade-in';
+                    homeForm.insertBefore(successBanner, homeForm.firstChild);
+                }
+                successBanner.innerHTML = `
+                    <div class="flex items-center gap-2.5">
+                        <span class="material-symbols-outlined text-emerald-400 text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <span class="font-medium">Inquiry submitted & recorded successfully!</span>
                     </div>
+                    <button type="button" class="dismiss-btn text-emerald-400/60 hover:text-emerald-300 transition-colors p-1" aria-label="Dismiss">
+                        <span class="material-symbols-outlined text-sm">close</span>
+                    </button>
                 `;
+
+                const dismissBtn = successBanner.querySelector('.dismiss-btn');
+                if (dismissBtn) {
+                    dismissBtn.addEventListener('click', () => successBanner?.remove());
+                }
+
+                // Explicitly clear all form fields
+                homeForm.reset();
+                if (nameInput) nameInput.value = '';
+                if (emailInput) emailInput.value = '';
+                if (messageInput) messageInput.value = '';
+
+                // Restore button state
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    const originalText = submitBtn.getAttribute('data-original-text');
+                    if (originalText) {
+                        submitBtn.innerHTML = originalText;
+                    } else {
+                        submitBtn.innerHTML = '<span>INQUIRE NOW</span><span class="material-symbols-outlined text-base">send</span>';
+                    }
+                }
             } catch (err: any) {
                 if (submitBtn) {
                     submitBtn.disabled = false;

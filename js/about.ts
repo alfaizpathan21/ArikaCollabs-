@@ -4,7 +4,6 @@ import { initBackToTop } from './backToTop';
 import { initNavPreview } from './navPreview';
 import { initThemeToggle } from './themeToggle';
 import { initPageTransitions } from './pageTransition';
-import { initSplashScreen } from './splashScreen';
 import { teamMembers } from '../src/config/team';
 
 function renderTeamMembers(): void {
@@ -83,7 +82,7 @@ function renderTeamMembers(): void {
 document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeToggle();
-    initSplashScreen({ duration: 3000 });
+    document.body.classList.add('splash-complete');
 
     // Render team members before scroll reveal attaches observers
     renderTeamMembers();

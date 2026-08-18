@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#1C1816" />
+      <stop offset="60%" stop-color="#141211" />
+      <stop offset="100%" stop-color="#0D0B0A" />
+    </radialGradient>
+
+    <!-- Master Luxury Rose Gold Gradient (Champagne -> Rose Gold -> Deep Warm Copper) -->
+    <linearGradient id="roseGoldPrimary" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#FFF2EE" />
+      <stop offset="18%" stop-color="#F3D1C8" />
+      <stop offset="48%" stop-color="#DDA291" />
+      <stop offset="78%" stop-color="#C68270" />
+      <stop offset="100%" stop-color="#9A5544" />
+    </linearGradient>
+
+    <!-- Secondary Reverse Gradient for Interlocking Contrast & Depth -->
+    <linearGradient id="roseGoldSecondary" x1="85%" y1="15%" x2="15%" y2="85%">
+      <stop offset="0%" stop-color="#FDE8E2" />
+      <stop offset="25%" stop-color="#E5B2A3" />
+      <stop offset="55%" stop-color="#DDA291" />
+      <stop offset="85%" stop-color="#B87360" />
+      <stop offset="100%" stop-color="#844535" />
+    </linearGradient>
+
+    <!-- Crossbar Specular Gradient -->
+    <linearGradient id="crossbarGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#DDA291" />
+      <stop offset="50%" stop-color="#FFF2EE" />
+      <stop offset="100%" stop-color="#B87360" />
+    </linearGradient>
+
+    <!-- Outer Rim Accent Gradient -->
+    <linearGradient id="rimGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3D1C8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#DDA291" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#B87360" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Precision Luxury Drop Shadow -->
+    <filter id="luxuryShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.75" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#DDA291" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Mask for Interlocking Overlap Negative Space -->
+    <mask id="cOverlapMask">
+      <!-- Everything visible by default -->
+      <rect width="500" height="500" fill="white" />
+      <!-- Cutout gap for the A left diagonal pass-through -->
+      <path d="M 250 100 L 155 395" stroke="black" stroke-width="44" stroke-linecap="round" />
+    </mask>
+  </defs>
+
+  <!-- Deep Obsidian Matte Canvas -->
+  <rect width="500" height="500" fill="url(#bgGlow)" />
+
+  <!-- Subtle Concentric Luxury Brand Framework Ring (Minimalist) -->
+  <circle cx="250" cy="250" r="222" fill="none" stroke="url(#rimGradient)" stroke-width="1.2" stroke-dasharray="4 8" opacity="0.4" />
+  <circle cx="250" cy="250" r="214" fill="none" stroke="url(#rimGradient)" stroke-width="0.75" opacity="0.6" />
+
+  <!-- Central AC Interlocking Monogram Geometry -->
+  <g filter="url(#luxuryShadow)">
+    
+    <!-- 1. The Interlocking 'C' Base Arch (Behind A's right leg, intersecting smoothly) -->
+    <path 
+      d="M 365 160 
+         C 330 115, 235 110, 175 160 
+         C 110 215, 110 295, 170 348 
+         C 230 395, 335 390, 368 340" 
+      fill="none" 
+      stroke="url(#roseGoldSecondary)" 
+      stroke-width="26" 
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- 2. The Capital 'A' Diagonal Left Stroke (Passing Over the C with crisp gap) -->
+    <!-- Left diagonal shadow underlay for depth separation -->
+    <path d="M 250 105 L 148 395" fill="none" stroke="#141211" stroke-width="36" stroke-linecap="round" />
+    <path d="M 250 105 L 148 395" fill="none" stroke="url(#roseGoldPrimary)" stroke-width="26" stroke-linecap="round" />
+
+    <!-- 3. The Capital 'A' Horizontal Crossbar (Connecting precisely) -->
+    <path d="M 188 285 L 312 285" fill="none" stroke="#141211" stroke-width="32" stroke-linecap="round" />
+    <path d="M 192 285 L 308 285" fill="none" stroke="url(#crossbarGradient)" stroke-width="22" stroke-linecap="round" />
+
+    <!-- 4. The Capital 'A' Diagonal Right Stroke (Flowing into and through C) -->
+    <path d="M 250 105 L 352 395" fill="none" stroke="url(#roseGoldPrimary)" stroke-width="26" stroke-linecap="round" />
+
+    <!-- 5. Interlocking Overlap Pass: Front segment of 'C' crossing OVER A's right leg -->
+    <path 
+      d="M 295 125 C 335 138, 365 160, 365 160" 
+      fill="none" 
+      stroke="url(#roseGoldSecondary)" 
+      stroke-width="26" 
+      stroke-linecap="round" 
+    />
+    
+    <!-- Precision Apex Fusion Node of A -->
+    <circle cx="250" cy="105" r="13" fill="url(#roseGoldPrimary)" />
+
+    <!-- Subtle Geometric Brand Diamond / Sparkle Accent at Apex -->
+    <path d="M 250 56 L 254 66 L 264 70 L 254 74 L 250 84 L 246 74 L 236 70 L 246 66 Z" fill="url(#crossbarGradient)" opacity="0.85" />
+  </g>
+</svg>

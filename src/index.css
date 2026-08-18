@@ -543,6 +543,53 @@ html.light .text-on-primary {
   color: #FFFFFF !important;
 }
 
+/* Light Mode Group Hover & Icon Box Visibility Rules */
+html.light .group:hover .group-hover\:bg-primary {
+  background-color: #C68878 !important;
+  border-color: #C68878 !important;
+}
+
+html.light .group:hover .group-hover\:bg-primary,
+html.light .group:hover .group-hover\:bg-primary .material-symbols-outlined,
+html.light .group:hover .group-hover\:bg-primary span,
+html.light .group:hover .group-hover\:text-on-primary,
+html.light .group:hover .group-hover\:text-on-primary .material-symbols-outlined,
+html.light .group:hover .group-hover\:text-on-primary span,
+html.light .group:hover .group-hover\:text-white,
+html.light .group:hover .group-hover\:text-white .material-symbols-outlined,
+html.light .group:hover .group-hover\:text-white span {
+  color: #FFFFFF !important;
+}
+
+/* Pillar Highlight Cards in Light Mode */
+html.light .pillar-icon-box {
+  background-color: rgba(198, 136, 120, 0.12) !important;
+  border-color: rgba(198, 136, 120, 0.25) !important;
+  color: #C68878 !important;
+}
+
+html.light .pillar-icon-box .material-symbols-outlined,
+html.light .pillar-icon-box span {
+  color: #C68878 !important;
+}
+
+html.light .group:hover .pillar-icon-box,
+html.light .glass-card:hover .pillar-icon-box,
+html.light .glass-panel:hover .pillar-icon-box {
+  background-color: #C68878 !important;
+  border-color: #C68878 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .group:hover .pillar-icon-box .material-symbols-outlined,
+html.light .glass-card:hover .pillar-icon-box .material-symbols-outlined,
+html.light .glass-panel:hover .pillar-icon-box .material-symbols-outlined,
+html.light .group:hover .pillar-icon-box span,
+html.light .glass-card:hover .pillar-icon-box span,
+html.light .glass-panel:hover .pillar-icon-box span {
+  color: #FFFFFF !important;
+}
+
 /* Mobile Menu & Theme Toggle in Light Mode */
 html.light #mobile-menu {
   background-color: rgba(250, 248, 246, 0.98) !important;

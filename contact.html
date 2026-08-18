@@ -132,40 +132,47 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10 text-left animate-on-scroll" style="transition-delay: 250ms;">
                 
                 <!-- Pod 1: Email -->
-                <a href="mailto:support@arikacollabs.com" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-start gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)]">
+                <a href="mailto:support@arikacollabs.com" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-center gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)] h-full">
                     <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl">mail</span>
                     </div>
-                    <div>
+                    <div class="min-w-0 flex-1">
                         <span class="text-[11px] font-mono uppercase tracking-wider text-primary block mb-1 font-bold">Direct Email</span>
-                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors">support@arikacollabs.com</p>
-                        <p class="text-[12px] text-on-surface-variant mt-1 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Replies within 2 hrs
+                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors truncate">support@arikacollabs.com</p>
+                        <p class="text-[12px] text-on-surface-variant mt-1 flex items-center gap-1.5 truncate">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0 animate-pulse"></span>
+                            <span class="truncate">Replies within 2 hrs</span>
                         </p>
                     </div>
                 </a>
 
                 <!-- Pod 2: Phone -->
-                <a href="tel:+917666393856" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-start gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)]">
+                <a href="tel:+917666393856" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-center gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)] h-full">
                     <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl">call</span>
                     </div>
-                    <div>
+                    <div class="min-w-0 flex-1">
                         <span class="text-[11px] font-mono uppercase tracking-wider text-primary block mb-1 font-bold">Concierge Hotline</span>
-                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors">+91 76663 93856</p>
-                        <p class="text-[12px] text-on-surface-variant mt-1">Mon – Sat • 9 AM–8 PM IST</p>
+                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors truncate">+91 76663 93856</p>
+                        <p class="text-[12px] text-on-surface-variant mt-1 flex items-center gap-1.5 truncate">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0"></span>
+                            <span class="truncate">Mon – Sat • 9 AM–8 PM IST</span>
+                        </p>
                     </div>
                 </a>
 
                 <!-- Pod 3: Corporate HQ -->
-                <a href="#contact-coordinates" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-start gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)]">
+                <a href="#contact-coordinates" class="glass-panel p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-300 group flex items-center gap-4 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(221,162,145,0.15)] h-full">
                     <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl">location_on</span>
                     </div>
-                    <div>
+                    <div class="min-w-0 flex-1">
                         <span class="text-[11px] font-mono uppercase tracking-wider text-primary block mb-1 font-bold">Corporate HQ</span>
-                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors">Nagpur, Maharashtra</p>
-                        <p class="text-[12px] text-on-surface-variant mt-1">NB Tower, Manish Nagar</p>
+                        <p class="text-white font-semibold text-sm group-hover:text-primary transition-colors truncate">Nagpur, Maharashtra</p>
+                        <p class="text-[12px] text-on-surface-variant mt-1 flex items-center gap-1.5 truncate">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0"></span>
+                            <span class="truncate">NB Tower, Manish Nagar</span>
+                        </p>
                     </div>
                 </a>
 
@@ -209,32 +216,42 @@
                         </p>
                     </div>
 
-                    <div class="space-y-8">
-                        <!-- Coordinate 1 -->
-                        <div class="flex gap-6 items-start">
-                            <span class="material-symbols-outlined text-primary text-3xl">mail</span>
-                            <div>
-                                <h4 class="font-label-lg text-label-lg text-white mb-1">Direct Email</h4>
-                                <a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-semibold" href="mailto:support@arikacollabs.com">support@arikacollabs.com</a>
+                    <div class="space-y-4">
+                        <!-- Coordinate 1: Direct Email -->
+                        <a href="mailto:support@arikacollabs.com" class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 group flex items-start gap-4 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(221,162,145,0.12)]">
+                            <div class="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 group-hover:bg-primary group-hover:text-on-primary transition-all flex-shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-xl">mail</span>
                             </div>
-                        </div>
-                        <!-- Coordinate 2 -->
-                        <div class="flex gap-6 items-start">
-                            <span class="material-symbols-outlined text-primary text-3xl">call</span>
-                            <div>
-                                <h4 class="font-label-lg text-label-lg text-white mb-1">Direct Line</h4>
-                                <a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-semibold" href="tel:+917666393856">+91 76663 93856</a>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1">Direct Email</h4>
+                                <span class="text-white font-semibold text-sm group-hover:text-primary transition-colors block truncate">support@arikacollabs.com</span>
+                                <span class="text-[12px] text-on-surface-variant mt-0.5 block">Global Brand Partnerships &amp; Talent Relations</span>
                             </div>
-                        </div>
-                        <!-- Coordinate 3 -->
-                        <div class="flex gap-6 items-start">
-                            <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
-                            <div>
-                                <h4 class="font-label-lg text-label-lg text-white mb-1">Headquarters Address</h4>
-                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                        </a>
+
+                        <!-- Coordinate 2: Direct Line -->
+                        <a href="tel:+917666393856" class="glass-panel p-5 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 group flex items-start gap-4 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(221,162,145,0.12)]">
+                            <div class="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 group-hover:bg-primary group-hover:text-on-primary transition-all flex-shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-xl">call</span>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1">Direct Line</h4>
+                                <span class="text-white font-semibold text-sm group-hover:text-primary transition-colors block">+91 76663 93856</span>
+                                <span class="text-[12px] text-on-surface-variant mt-0.5 block">Mon – Sat • 9:00 AM – 8:00 PM IST</span>
+                            </div>
+                        </a>
+
+                        <!-- Coordinate 3: Headquarters Address -->
+                        <div class="glass-panel p-5 rounded-xl border border-primary/20 transition-all duration-300 group flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+                                <span class="material-symbols-outlined text-xl">location_on</span>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1">Headquarters Address</h4>
+                                <p class="text-white font-semibold text-sm mb-1">NB Tower, Manish Nagar</p>
+                                <p class="text-[12px] text-on-surface-variant leading-relaxed">
                                     1st floor, NB Tower, plot no 6/7, above Bank of Baroda, beside Tanishq,<br/>
-                                    Jai Hind Society, Shyam Nagar, Manish Nagar, Somalwada,<br/>
-                                    Nagpur, Maharashtra 440037
+                                    Jai Hind Society, Shyam Nagar, Somalwada, Nagpur, Maharashtra 440037
                                 </p>
                             </div>
                         </div>
@@ -255,28 +272,28 @@
                 <!-- Inquiry Form (Right Column) -->
                 <div id="inquiry-form" class="glass-panel p-12 rounded-2xl border-white/5 animate-on-scroll">
                     <h3 class="font-headline-lg text-headline-md text-white mb-8">Elite Inquiry Form</h3>
-                    <form class="space-y-8">
+                    <form class="space-y-8" id="elite-inquiry-form">
                         <div>
-                            <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Full Name</label>
-                            <input class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="Alexander McQueen" type="text" required/>
+                            <label for="contact-name" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Full Name <span class="text-primary">*</span></label>
+                            <input id="contact-name" name="fullName" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="Alexander McQueen" type="text" required/>
                         </div>
                         <div>
-                            <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Company / Brand Name</label>
-                            <input class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="Arika Collabs" type="text"/>
+                            <label for="contact-company" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Company / Brand Name</label>
+                            <input id="contact-company" name="companyName" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="Arika Collabs" type="text"/>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Email Address</label>
-                                <input class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="alex@luxury.com" type="email" required/>
+                                <label for="contact-email" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Email Address <span class="text-primary">*</span></label>
+                                <input id="contact-email" name="email" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="alex@luxury.com" type="email" required/>
                             </div>
                             <div>
-                                <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Phone Coordinate</label>
-                                <input class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="+33 6 1234 5678" type="tel"/>
+                                <label for="contact-phone" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Phone Coordinate</label>
+                                <input id="contact-phone" name="phone" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none" placeholder="+33 6 1234 5678" type="tel"/>
                             </div>
                         </div>
                         <div>
-                            <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Inquiry Type</label>
-                            <select class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-on-surface-variant font-medium text-sm transition-all focus:border-primary focus:outline-none appearance-none">
+                            <label for="contact-inquiry-type" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Inquiry Type</label>
+                            <select id="contact-inquiry-type" name="inquiryType" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-on-surface-variant font-medium text-sm transition-all focus:border-primary focus:outline-none appearance-none">
                                 <option>Brand Collaboration Campaign</option>
                                 <option>Talent Representation Request</option>
                                 <option>Bespoke Creative Consulting</option>
@@ -284,11 +301,12 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Campaign Message</label>
-                            <textarea class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none h-32 resize-none custom-scrollbar" placeholder="Detail your project requirements, target goals, or creative portfolio..."></textarea>
+                            <label for="contact-message" class="block text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Campaign Message <span class="text-primary">*</span></label>
+                            <textarea id="contact-message" name="campaignMessage" class="w-full bg-[#1A1A1A] border border-white/10 rounded-lg px-5 py-4 text-white font-medium text-sm transition-all focus:border-primary focus:outline-none h-32 resize-none custom-scrollbar" placeholder="Detail your project requirements, target goals, or creative portfolio..." required></textarea>
                         </div>
-                        <button class="w-full bg-primary text-on-primary font-bold py-5 rounded-full hover:bg-primary/95 hover:shadow-[0_0_25px_rgba(221,162,145,0.5)] transition-all uppercase text-sm tracking-widest cursor-pointer btn-shine" type="submit">
-                            SUBMIT INQUIRY
+                        <button id="contact-submit-btn" class="w-full bg-primary text-on-primary font-bold py-5 rounded-full hover:bg-primary/95 hover:shadow-[0_0_25px_rgba(221,162,145,0.5)] transition-all uppercase text-sm tracking-widest cursor-pointer btn-shine flex items-center justify-center gap-2" type="submit">
+                            <span>INQUIRE NOW</span>
+                            <span class="material-symbols-outlined text-base">send</span>
                         </button>
                     </form>
                 </div>
